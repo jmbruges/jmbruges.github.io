@@ -1,10 +1,10 @@
-url: https://jasmcole.github.io
+url: https://jmbruges.github.io
 baseurl:
 
 # Site settings
-title: jasmcole.github.io
-email: jcole730@gmail.com
-description: "The personal website of Jason Cole."
+title: jmbruges.github.io
+email: javier.bruges@gmail.com
+description: "The personal website of Javier Brugés."
 
 # Color settings (hex-codes without the leading hash-tag)
 color:
@@ -16,19 +16,19 @@ color:
 # Social networks usernames (many more available: google-plus, flickr, dribbble, pinterest, instagram, tumblr, linkedin, etc.)
 social:
   - title: envelope
-    url: mailto:jcole730@gmail.com
+    url: mailto:javier.bruges@gmail.com
   - title: mortar-board
-    url: http://www3.imperial.ac.uk/johnadamsinstitute/team
+    url: https://www.miun.se/Personal/javierbruges/
   - title: linkedin
-    url: https://www.linkedin.com/profile/view?id=355904591
+    url: https://www.linkedin.com/in/javierbruges/
   - title: wordpress
-    url: http://www.jasmcole.com
+    url: https://wordpress.com/home/jbrugesblog.wordpress.com
   - title: google-plus
-    url: https://plus.google.com/112991282536415123341/posts
+    url: 
   - title: twitter
-    url: http://twitter.com/jasmcole
+    url: 
   - title: github
-    url: http://github.com/jasmcole
+    url: http://github.com/jmbruges
 
 press:
   - url: http://www.theguardian.com/science/blog/2015/mar/26/how-particle-accelerator-maths-helped-me-fix-my-wi-fi
