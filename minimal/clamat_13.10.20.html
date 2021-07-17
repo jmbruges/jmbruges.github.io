@@ -1,0 +1,186 @@
+<!doctype html>
+<html>
+	<head> 
+		<meta charset="utf-8">
+		<meta name="description" content="Slides">
+		<meta name="author" content="Javier Brugés">
+		<meta name="viewport" content="width=device-width">
+		<!-- <link rel="stylesheet" href="unity-white.css" id="theme"> -->
+
+		<script src="submodules/headjs/dist/1.0.0/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+		<!-- <script src="submodules/Snap.svg/dist/snap.svg-min.js"></script> -->
+		<!-- <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"> -->
+
+		<title>Javier presentation for Claes Mattsson	</title>
+
+		<link rel="stylesheet" href="css/reset.css">
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/night.css">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/monokai.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+	</head>
+    
+    <body>
+		<style>
+			.reveal .slides section .fragment.fade-down {
+				opacity: 1;
+				visibility: visible;
+			}
+			.reveal .slides section .fragment.fade-down.visible,
+			.reveal .slides section .fragment.visible:not(.current-fragment) {
+				color: grey;
+			}
+			.reveal .slides section .fragment.fade-down,
+			.reveal .slides section .fragment.current-fragment {
+				color: #1b91ff;
+			}
+		</style>
+		<div class="reveal">
+		<div class="slides">
+<!-- ======================================================================= -->
+<section data-transition="slide">	
+	<section data-background="asset/miunFirstslide.svg">
+	<br>
+	<br>
+	<br>
+	<br>
+	<h3 style="color:white;font-family: Fira Sans;"><b>Optical surface characterization methods for industrial large area products</b></h3>
+	<h4 style="color:white;font-family: Fira Sans;">Möte med Avdelningschef</h4>
+	<p  style="color: whitesmoke;text-align: left;">
+
+		Author: Javier Brugés
+	</p>
+	<p class="positioned" style="color: whitesmoke;text-align-last: left;;" >
+		EKS department.
+		<br>
+		<span id="datetime"></span>
+	</p>
+
+</section>
+<!-- ======================================================================= -->
+<section data-transition="slide", data-background="rgb(255,255,255)">
+	<h4 style=color:#1b91ff;>
+		Scope
+	</h4>
+	
+	<div class="fragment fade-out" data-fragment-index="0" style="width: 100%;">
+		<figure>
+				<img src="data/scope/FirstSlide2019.png"
+				alt="RGB polarizer array"
+				width="90%">
+				<figcaption  style=color:#1b91ff;>Large area manufacturing process</figcaption>
+
+		</figure>
+	</div>
+
+	<div class="fragment" data-fragment-index="0" style="position: absolute;top: 15%;left: 0%;">
+		<p class="fragment" data-fragment-index="1">What? - Critical parameters and surface texture.</p>
+		<p class="fragment" data-fragment-index="1">Why? - Controlling parameters in online/inline.</p>
+		<p class="fragment" data-fragment-index="1">How? - Transfer parameters in an real time optical system.</p>
+	</div>
+	
+	<aside class="notes">
+		<p>
+			The optical system used for the experiments is described in the article: X. Tu, O. Spires, X. Tian, N. Brock, R. Liang, and S. Pau, "Division of amplitude RGB full-Stokes camera using micro-polarizer arrays: erratum," Opt. Express 26, 4192-4193 (2018).<br>
+			<a href="https://www.osapublishing.org/oe/abstract.cfm?uri=oe-26-4-4192"> Link to article</a>
+		</p>
+	</aside>
+</section>
+<!-- ======================================================================= -->
+<section data-transition="slide">
+	<h4>RGB full-Stokes polarimetry system</h4>
+	<h5>Year strategy</h5>
+	<div style="font-size-adjust: inherit; font-size: medium;">
+		<table class="reveal">
+			<tr>
+				<td style="position:static; width:640px; height:480px; margin:0 auto;">
+					<p style="display: block; font-size: large;" class="fragment" data-fragment-index="0" >Imaging ellipsometry for paperboard industry</p>
+					<video class="fragment fade-in" autoplay="autoplay" loop="loop" width="400" height="300">
+						<source src="data/articleprod/mdpi.mp4" type="video/mp4"/>
+					</video>		
+				</td>
+				<td style="position:static; width:640px; height:480px; margin:0 auto;">
+					<p style="display: block; font-size: large;" class="fragment" data-fragment-index="0" >Characterization of PE coating in microscopy</p>
+					<video class="fragment fade-in" autoplay="autoplay" loop="loop" width="400" height="300">
+						<source src="data/articleprod/3dSEM.mp4" type="video/mp4"/>
+					</video>		
+				</td>
+				<td style="position:static; width:640px; height:480px; margin:0 auto;">
+					<p  style="display: block; font-size: large;" class="fragment" data-fragment-index="0">Article 3</p>
+					<div class=""r-stack">
+						<video class="fragment fade-in" autoplay="autoplay" loop="loop" width="400" height="300">
+							<source src="data/articleprod/dupaysphere.mp4" type="video/mp4"/>
+						</video>
+					</div>
+				</td>	
+			</tr>
+		</table>
+
+	</div>
+	
+	<aside class="notes">
+		<p>
+			The optical system used for the experiments is described in the article: X. Tu, O. Spires, X. Tian, N. Brock, R. Liang, and S. Pau, "Division of amplitude RGB full-Stokes camera using micro-polarizer arrays: erratum," Opt. Express 26, 4192-4193 (2018).<br>
+			<a href="https://www.osapublishing.org/oe/abstract.cfm?uri=oe-26-4-4192"> Link to article</a>
+		</p>
+	</aside>
+</section>
+<!-- ======================================================================= -->
+
+<script src="js/reveal.js"></script>
+
+<script>
+	// More info about config & dependencies:
+	// - https://github.com/hakimel/reveal.js#configuration
+	// - https://github.com/hakimel/reveal.js#dependencies
+	Reveal.initialize({
+		width: 1280,
+		height: 720,
+		margin: 0.0,
+		history: true,
+		slideNumber: true,
+		showNotes: false,
+		progress: true,
+		transition: 'none',
+		math: {
+			// mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js',
+			config: 'TeX-AMS_HTML-full',
+			TeX: {
+				Macros: {
+					R: '\\mathbb{R}',
+					set: [ '\\left\\{#1 \\; ; \\; #2\\right\\}', 2 ]
+				}
+			}
+		},
+		dependencies: [
+			{ src: 'plugin/markdown/marked.js' },
+			{ src: 'plugin/markdown/markdown.js' },
+			{ src: 'plugin/zoom-js/zoom.js', async: true },
+			{ src: 'plugin/notes/notes.js', async: false },
+			{ src: 'plugin/highlight/highlight.js', async: true },
+			{ src: 'plugin/math/math.js', async: true },
+			{ src: 'minimal/plugin/reveald3/reveald3.js' }
+		]
+	});
+</script>
+<script>
+	var dt = new Date();
+	document.getElementById("datetime").innerHTML = dt.toLocaleDateString();
+</script>
+		<!-- <script type="text/x-mathjax-config">
+			MathJax.Hub.Config({ TeX: { extensions: ["color.js"] }});
+		</script> -->
+    </body>
+</html>
+

@@ -1,0 +1,482 @@
+<!doctype html>
+<html>
+	<head> 
+		<meta charset="utf-8">
+		<meta name="description" content="Slides">
+		<meta name="author" content="Javier Brugés">
+		<meta name="viewport" content="width=device-width">
+		<!-- <link rel="stylesheet" href="unity-white.css" id="theme"> -->
+
+		<script src="submodules/headjs/dist/1.0.0/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+		<!-- <script src="submodules/Snap.svg/dist/snap.svg-min.js"></script> -->
+		<!-- <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"> -->
+
+		<title>Javier presentation for Tuan Ahn</title>
+
+		<link rel="stylesheet" href="css/reset.css">
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/night.css">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/monokai.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+	</head>
+    
+    <body>
+		<style>
+			.reveal .slides section .fragment.fade-down {
+				opacity: 1;
+				visibility: visible;
+			}
+			.reveal .slides section .fragment.fade-down.visible,
+			.reveal .slides section .fragment.visible:not(.current-fragment) {
+				color: grey;
+			}
+			.reveal .slides section .fragment.fade-down,
+			.reveal .slides section .fragment.current-fragment {
+				color: #1b91ff;
+			}
+		</style>
+		<div class="reveal">
+			<div class="slides">
+<!-- ======================================================================= -->
+<section data-transition="slide">	
+	<section data-background="asset/miunFirstslide.svg">
+	<br>
+	<br>
+	<br>
+	<br>
+	<h3 style="color:white;font-family: Fira Sans;"><b>Full-Stokes polarimetry</b></h3>
+	<h4 style="color:white;font-family: Fira Sans;">Application with polyethylene coated paperboard</h4>
+	<p  style="color: whitesmoke;text-align: left;">
+
+		Author: Javier Brugés
+	</p>
+	<p class="positioned" style="color: whitesmoke;text-align-last: left;;" >
+		EKS department.
+		<br>
+		<span id="datetime"></span>
+	</p>
+	<aside class="notes">
+	
+		<p>
+			Experiment done in Tucson Arizona. <br>
+
+			Contains all experimental approaches and some theory background.<br>
+
+			Research question: <b>Can polarization show correlation to surface texture or to some type of quality mesurant?</b><br>
+		</p>
+		<p>
+			During the slides you can hold down the <strong>alt</strong> key (<strong>ctrl</strong> in Linux) and click on any element to zoom towards it. Click again to zoom back out.
+		</p>
+		<p>
+			Scroll down to find the links to the dataset and the codes in matlab and python used to test the data.
+		</p>
+	</aside>
+	</section>
+	<section>
+		github and box dataset
+	</section>
+
+</section>
+<!-- ======================================================================= -->
+<section data-transition="slide">
+	<h4>RGB full-Stokes polarimetry system</h4>
+	
+	<div class="fragment fade-out" data-fragment-index="0" style="width: 100%;">
+	<table>
+		<tr>
+			<td>
+				<figure>
+						<img src="data/OpticalSystem/rgbArray.svg"
+						alt="RGB polarizer array"
+						width="300">
+						<figcaption>RGB polarizer arrays</figcaption>
+
+				</figure>
+			</td>
+			<td>
+				<figure>
+					<img class="center" src="data/OpticalSystem/SetUpTucson.svg"
+					alt="RGB polarizer array"
+					width="500"
+					>
+					<figcaption>Full polarimetric <br> camera system</figcaption>
+
+				</figure>									
+			</td>
+		</tr>
+	</table>
+
+	</div>
+	<div class="fragment" data-fragment-index="0" style="position: absolute;top: 19%;left: 19%;">
+		<figure>
+			<img src="data/OpticalSystem/SetupTucsonLab.svg"
+					alt="RGB polarizer array"
+					width="800"
+					>
+			<figcaption>Lab picture</figcaption>
+
+		</figure></span>
+	</div>
+	
+	<aside class="notes">
+		<p>
+			The optical system used for the experiments is described in the article: X. Tu, O. Spires, X. Tian, N. Brock, R. Liang, and S. Pau, "Division of amplitude RGB full-Stokes camera using micro-polarizer arrays: erratum," Opt. Express 26, 4192-4193 (2018).<br>
+			<a href="https://www.osapublishing.org/oe/abstract.cfm?uri=oe-26-4-4192"> Link to article</a>
+		</p>
+	</aside>
+</section>
+<!-- ======================================================================= -->
+<section data-transition="slide">
+	<h4>First experiment</h4>
+
+	<div style="width: 100%;">
+		<figure>
+			<img src="data/firstExp/PapersColor.svg"
+			alt="set of paper for analysis"
+			width="45%">
+			<figcaption style="font-size: 28px;">Set of papers for the first experiment. View from the Optical System <br> From left to rigth: <br><span style="font: italic;">(a)PE coated paperboard, (b)Uncoated paperboard, (c)High quality photopaper, (d) normal Fotocopy paper</span>
+		</figure>
+	</div>
+	<aside class="notes">
+			A set of papers were analysed under the optical system. The idea is to find an understanding on the polarimetric relation between paper grades and properties of the material. From left to rigth there are four type of paper (later in the experiment we only cosider the first three):<br/>
+			<ol type="a">
+					<li>PE coated paperboard</li>
+					<li>Uncoated paperboard (substrate of "a")</li>
+					<li>High quality photopaper</li>
+					<li>Fotocopy paper(normal printer one)</li>
+				</ol>
+		</aside>
+</section>
+<!-- ======================================================================= -->
+<section data-transition="slide">
+	<h4>
+		Results under unpolarized ligth
+	</h4>
+	<div style="width: 100%;">
+		<table style="justify-content: center;">
+			<tr>
+				<td>
+					<figure>
+						<img src="data/firstExp/S0U.svg" alt="S0 component under unpolarized ligth" width="200">
+						<figurecaption>	S0 </figurecaption>
+					</figure>
+				</td>
+				<td>
+					<figure>
+						<img src="data/firstExp/S1U.svg" alt="S1 component under unpolarized ligth" width="200">
+						<figurecaption>	S1 </figurecaption>
+					</figure>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<figure>
+						<img src="data/firstExp/S2U.svg" alt="S2 component under unpolarized ligth" width="200">
+						<br>
+						<figurecaption>	S2 </figurecaption>
+					</figure>
+				</td>
+				<td>
+					<figure>
+						<img src="data/firstExp/S3U.svg" alt="S3 component under unpolarized ligth" width="200">
+						<figurecaption>	S3 </figurecaption>
+					</figure>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<aside class="notes">
+		<p>Illumination by a white LED. No polarization filter.</p>
+		<p>A set of papers were analysed under the optical system. The idea is to find an understanding on the polarimetric relation between paper grades and properties of the material. From left to rigth there are four type of paper (later in the experiment we only cosider the first three):</p>
+		<br/>
+		<p><ol type="a">
+				<li>PE coated paperboard</li>
+				<li>Uncoated paperboard (substrate of "a")</li>
+				<li>High quality photopaper</li>
+				<li>Fotocopy paper(normal printer one)</li>
+			</ol></p>
+	</aside>
+</section>
+<!-- ======================================================================= -->
+<section data-transition="slide">
+	<h4>
+		Results under linearly (vertical) poralized ligth
+	</h4>
+	<div style="width: 100%;">
+		<table>
+			<tr>
+				<td>
+					<figure>
+						<img src="data/firstExp/S0L.svg" alt="S0 component under linearly poralized ligth" width="200">
+						<figurecaption>	S0 </figurecaption>
+					</figure>
+				</td>
+				<td>
+					<figure>
+						<img src="data/firstExp/S1L.svg" alt="S1 component under linearly poralized ligth" width="200">
+						<figurecaption>	S1 </figurecaption>
+					</figure>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<figure>
+						<img src="data/firstExp/S2L.svg" alt="S2 component under linearly poralized ligth" width="200">
+						<figurecaption>	S2 </figurecaption>
+					</figure>
+				</td>
+				<td>
+					<figure>
+						<img src="data/firstExp/S3L.svg" alt="S3 component under linearly poralized ligth" width="200">
+						<figurecaption>	S3 </figurecaption>
+					</figure>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<aside class="notes">
+			<p>Illumination by a white LED. Linearly polarized. Orientation vertical.</p>
+			<p>A set of papers were analysed under the optical system. The idea is to find an understanding on the polarimetric relation between paper grades and properties of the material. From left to rigth there are four type of paper (later in the experiment we only cosider the first three):</p>
+			<br/>
+			<p><ol type="a">
+					<li>PE coated paperboard</li>
+					<li>Uncoated paperboard (substrate of "a")</li>
+					<li>High quality photopaper</li>
+					<li>Fotocopy paper(normal printer one)</li>
+				</ol></p>
+		</aside>
+</section>
+<!-- ======================================================================= -->
+<section data-transition="slide">
+	<h4>
+		Results under circulary poralized ligth
+	</h4>
+	<div style="width: 100%;">
+		<table>
+			<tr>
+				<td>
+					<figure>
+						<img src="data/firstExp/S0C.svg" alt="S0 component under circulary ligth" width="200">
+						<figurecaption>	S0 </figurecaption>
+					</figure>
+				</td>
+				<td>
+					<figure>
+						<img src="data/firstExp/S1C.svg" alt="S1 component under circulary ligth" width="200">
+						<figurecaption>	S1 </figurecaption>
+					</figure>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<figure>
+						<img src="data/firstExp/S2C.svg" alt="S2 component under circulary ligth" width="200">
+						<figurecaption>	S2 </figurecaption>
+					</figure>
+				</td>
+				<td>
+					<figure>
+						<img src="data/firstExp/S3C.svg" alt="S3 component under circulary ligth" width="200">
+						<figurecaption>	S3 </figurecaption>
+					</figure>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<aside class="notes">
+			<p>Illumination by a white LED. Circularly polarized filter.</p>
+			<p>A set of papers were analysed under the optical system. The idea is to find an understanding on the polarimetric relation between paper grades and properties of the material. From left to rigth there are four type of paper (later in the experiment we only cosider the first three):</p>
+			<br/>
+			<p><ol type="a">
+					<li>PE coated paperboard</li>
+					<li>Uncoated paperboard (substrate of "a")</li>
+					<li>High quality photopaper</li>
+					<li>Fotocopy paper(normal printer one)</li>
+				</ol></p>
+		</aside>
+</section>
+<!-- ======================================================================= -->
+<section data-transition="slide">
+	<h4>Mutual relation between parameters:</h4>
+	<p class="center" style="font-size: 70%;width: 100%;">derivation of polarzation properties</p> 
+	<div class="fragment" data-fragment-index="0" style="position:fixed;top: 83.5%;left: 50.6%; display:flex; flex-flow: column;z-index: -1;">
+		<svg>
+			<rect height="100" style="fill:#3673c2;stroke-width:3;stroke:#fcd213;fill-opacity:0.9;stroke-opacity:0.9" width="160"></rect>
+		</svg>
+	</div>
+	<br>
+	<div  style="width: 100%;height: 100%;font-size: 45%;">
+		<table>
+			<tr>\[DOP\ =\ \frac{\sqrt{s^{2}_{1} +s^{2}_{2} +s^{2}_{3}}}{s_{0}}\]</tr>
+			<tr>\[DOLP\ =\ \frac{\sqrt{s^{2}_{1} +s^{2}_{2}}}{s_{0}}\]</tr>
+			<tr>\[DOCP\ =\ \frac{s_{3}}{s_{0}}\]</tr>
+			<tr>for partially polarized ligth (our case) 
+					\[DOP\ < 1\]
+			
+					\[S_{0} \ =\ S_{p} \ +\ S_{u} \ =\ \left[\begin{array}{ c }
+					s_{0}\\
+					s_{1}\\
+					s_{2}\\
+					s_{3}
+					\end{array}\right] \ =\ s_{0} DOP\left[\begin{array}{ c }
+					1\\
+					s_{1} /( s_{0} DOP)\\
+					s_{2} /( s_{0} DOP)\\
+					s_{3} /( s_{0} DOP)
+					\end{array}\right] \ +\ ( 1-DOP)\left[\begin{array}{ c }
+					1\\
+					0\\
+					0\\
+					0
+					\end{array}\right]
+					\]</tr>
+		</table>
+	</div>
+	<div class="fragment" data-fragment-index="0" style="position:fixed;top: 55.0%;left: 65.6%; display:flex; flex-flow: column;z-index: -1;">
+		<textarea readonly name="OPS" id="" cols="30" rows="9" style="font-size: 5px;">These parameters are used as graphical solution built in the Observable Poincaré Sphere where ellipticity and orientation can show the dependency of reflected light under the different angles of incidence and the different sensors.</textarea>
+	
+	</div>
+	<aside class="notes">
+		<p>
+			The question that is formulated is "how these parameters are associated with the papers optical properties?"
+		</p>
+		<p>
+			Properties like depolarization is a measure of scattering. Roughness and other properties are also associated with scattering events.
+		</p>
+	</aside>
+		
+</section>
+<!-- ======================================================================= -->
+<section data-transition="slide">
+	<h4>Observable Poincaré sphere</h4>
+		<div class="fragment fade-out"  data-fragment-index="0" style="width: 100%;">
+			<figure>
+				<img src="data/Poincare/OPC.svg" alt="Observable Poincaré Sphere sample">
+			</figure>
+		</div>
+
+		<div class="fragment" data-fragment-index="0" style="width: 100%;position: absolute;top: 15%;left: 15%;">
+			<table>
+				<tr>
+					<td>
+						<figure>
+								<img src="data/Poincare/OPC.svg" alt="Observable Poincaré Sphere sample">
+						</figure>
+
+					</td>
+					<td>
+						<tr>
+							paper 1
+						</tr>
+						<tr>
+							paper 2
+						</tr>
+						<tr>
+							paper 3
+						</tr>
+					</td>
+				</tr>
+			</table>
+
+		</div>
+		<div class="sl-block-content animation-trigger" style="z-index: 15; transition-duration: 0.8s; transition-delay: 1.1s;" data-inline-svg="false" data-animation-type="fade-out" data-animation-trigger="click" data-animation-trigger-id="self">
+				<img data-natural-width="336" data-natural-height="159" data-lazy-loaded="" src="data/Poincare/OPC.svg">
+			</div>
+
+
+</section>
+<!-- ======================================================================= -->
+<section data-id="4532c0273caa7a02e5009f4c610fa2a2" class="present" style="display: block;"><div class="sl-block" data-block-type="image" style="min-width: 4px; min-height: 4px; width: 336px; height: 159px; left: 72px; top: 271px;" data-block-id="d024b9094fa19ed419e4e45626d0b275"><div class="sl-block-content" style="z-index: 10; transition-duration: 0.6s;" data-inline-svg="false" data-animation-type="fade-in" data-animation-trigger="click" data-animation-trigger-id="558d9602aaff7967129d3369b87bb346"><img style="" data-natural-width="336" data-natural-height="159" data-lazy-loaded="" src="https://s3.amazonaws.com/media-p.slid.es/uploads/1154767/images/6656283/MIUN_logotyp.svg"></div></div>
+	<div class="sl-block" data-block-type="video" style="min-width: 30px; min-height: 30px; width: 320px; height: 179px; left: 480px; top: 70px;" data-block-id="b1cbf83692fbb556b909124d39d86fad"><div class="sl-block-content" style="z-index: 10; border-style: solid; border-width: 1px; transition-duration: 0.6s;" data-media-id="6680320" data-video-thumb="https://s3.amazonaws.com/media-p.slid.es/videos/1154767/WGt6wN27/finalworkteam_thumb_00001.jpg" data-animation-type="fade-in" data-animation-trigger-id="558d9602aaff7967129d3369b87bb346" data-animation-trigger="click"><video playsinline="" controls="controls" poster="https://s3.amazonaws.com/media-p.slid.es/videos/1154767/WGt6wN27/finalworkteam_thumb_00001.jpg" loop="loop" data-lazy-loaded="" data-autoplay="" data-paused-by-reveal="" src="https://s3.amazonaws.com/media-p.slid.es/videos/1154767/WGt6wN27/finalworkteam.mp4"></video></div></div>
+	<div class="sl-block" data-block-type="video" style="min-width: 30px; min-height: 30px; width: 320px; height: 179px; left: 480px; top: 280px;" data-block-id="79baaea8243a3e9d6e88fa147e0e8b38"><div class="sl-block-content" style="z-index: 10; border-style: solid; border-width: 1px; transition-duration: 0.6s;" data-media-id="6680320" data-video-thumb="https://s3.amazonaws.com/media-p.slid.es/videos/1154767/WGt6wN27/finalworkteam_thumb_00001.jpg" data-animation-type="fade-in" data-animation-trigger-id="558d9602aaff7967129d3369b87bb346" data-animation-trigger="click"><video playsinline="" controls="controls" poster="https://s3.amazonaws.com/media-p.slid.es/videos/1154767/WGt6wN27/finalworkteam_thumb_00001.jpg" data-autoplay="" loop="loop" data-lazy-loaded="" data-paused-by-reveal="" src="https://s3.amazonaws.com/media-p.slid.es/videos/1154767/WGt6wN27/finalworkteam.mp4"></video></div></div>
+	<div class="sl-block" data-block-type="video" style="min-width: 30px; min-height: 30px; width: 320px; height: 179px; left: 480px; top: 490px;" data-block-id="b354fbb540c4d9497c9aa71f934d03fc"><div class="sl-block-content" style="z-index: 10; border-style: solid; border-width: 1px; transition-duration: 0.6s;" data-media-id="6680320" data-video-thumb="https://s3.amazonaws.com/media-p.slid.es/videos/1154767/WGt6wN27/finalworkteam_thumb_00001.jpg" data-animation-type="fade-in" data-animation-trigger-id="558d9602aaff7967129d3369b87bb346" data-animation-trigger="click"><video playsinline="" controls="controls" poster="https://s3.amazonaws.com/media-p.slid.es/videos/1154767/WGt6wN27/finalworkteam_thumb_00001.jpg" data-autoplay="" loop="loop" data-lazy-loaded="" data-paused-by-reveal="" src="https://s3.amazonaws.com/media-p.slid.es/videos/1154767/WGt6wN27/finalworkteam.mp4"></video></div></div>
+	<div class="sl-block" data-block-type="image" style="min-width: 4px; min-height: 4px; width: 336px; height: 159px; left: 279px; top: 280px;" data-block-id="558d9602aaff7967129d3369b87bb346"><div class="sl-block-content animation-trigger" style="z-index: 15; transition-duration: 0.8s; transition-delay: 1.1s;" data-inline-svg="false" data-animation-type="fade-out" data-animation-trigger="click" data-animation-trigger-id="self"><img style="" data-natural-width="336" data-natural-height="159" data-lazy-loaded="" src="https://s3.amazonaws.com/media-p.slid.es/uploads/1154767/images/6656283/MIUN_logotyp.svg"></div></div></section>
+<!-- ======================================================================= -->
+	
+	<section>
+	  <h2 class="fragment fade-down" data-fragment-index="0">Highlight First Line Test</h2>
+	  <p class="fragment" data-fragment-index="0">Want this line visible <i>and</i> colour highlighted on slide entry</p>
+	  <p class="fragment">Appears 2nd with colour highlight</p>
+	</section>
+<!-- ======================================================================= -->
+
+	<section data-transition="slide">
+		and on …
+	</section>
+	<section data-transition="slide-in fade-out">
+		and stops.
+	</section>
+	<section data-transition="fade-in slide-out">
+		(Passengers entering and leaving)
+	</section>
+	<section data-transition="slide">
+		And it starts again.
+	</section>
+			</div>
+		</div>
+
+		
+		<script src="js/reveal.js"></script>
+
+		<script>
+			// More info about config & dependencies:
+			// - https://github.com/hakimel/reveal.js#configuration
+			// - https://github.com/hakimel/reveal.js#dependencies
+			Reveal.initialize({
+				width: 1280,
+				height: 720,
+				margin: 0.0,
+				history: true,
+				slideNumber: true,
+				showNotes: true,
+				progress: true,
+				transition: 'none',
+				math: {
+					// mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js',
+					config: 'TeX-AMS_HTML-full',
+					TeX: {
+						Macros: {
+							R: '\\mathbb{R}',
+							set: [ '\\left\\{#1 \\; ; \\; #2\\right\\}', 2 ]
+						}
+					}
+				},
+				dependencies: [
+					{ src: 'plugin/markdown/marked.js' },
+					{ src: 'plugin/markdown/markdown.js' },
+					{ src: 'plugin/zoom-js/zoom.js', async: true },
+					{ src: 'plugin/notes/notes.js', async: true },
+					{ src: 'plugin/highlight/highlight.js', async: true },
+					{ src: 'plugin/math/math.js', async: true }
+				]
+			});
+		</script>
+		<script>
+			var dt = new Date();
+			document.getElementById("datetime").innerHTML = dt.toLocaleDateString();
+		</script>
+		<!-- <script type="text/x-mathjax-config">
+			MathJax.Hub.Config({ TeX: { extensions: ["color.js"] }});
+		</script> -->
+    </body>
+</html>
+
+<!-- Reveal.initialize({
+    width: "100%",
+    height: "100%",
+    margin: 0,
+    minScale: 1,
+    maxScale: 1
+}); -->
+<!-- #3673c2blue miun color -->

@@ -1,0 +1,492 @@
+<!doctype html>
+<html>
+	<head> 
+		<meta charset="utf-8">
+		<meta name="description" content="Slides">
+		<meta name="author" content="Javier Brugés">
+		<meta name="viewport" content="width=device-width">
+		<!-- <link rel="stylesheet" href="unity-white.css" id="theme"> -->
+
+		<script src="submodules/headjs/dist/1.0.0/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+		<!-- <script src="submodules/Snap.svg/dist/snap.svg-min.js"></script> -->
+		<!-- <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"> -->
+
+		<title>Javier presentation for Claes Mattsson	</title>
+
+		<link rel="stylesheet" href="css/reset.css">
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/night.css">
+		<link href="css/styles.css" rel="stylesheet">
+ 		<script type="text/javascript" src="js/image-reveal.js"></script>
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/monokai.css">
+
+		<!-- slider -->
+		<link rel="stylesheet" href="dist/BeerSlider.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+        </script>
+		
+		<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    	<script type="text/javascript">
+		google.charts.load('current', {
+			'packages':['geochart'],
+			// Note: you will need to get a mapsApiKey for your project.
+			// See: https://developers.google.com/chart/interactive/docs/basic_load_libs#load-settings
+			'mapsApiKey': 'AIzaSyD-9tSrke72PouQMnMX-a7eZSW0jkFMBWY'
+		});
+		google.charts.setOnLoadCallback(drawColMap);
+
+		function drawColMap() {
+			var data = google.visualization.arrayToDataTable([
+			['Country'],
+			['Colombia']
+			]);
+
+			var options = {};
+
+			var chart = new google.visualization.GeoChart(document.getElementById('colombia'));
+
+			chart.draw(data, options);
+		}
+
+		google.charts.setOnLoadCallback(drawArgMap);
+
+		function drawArgMap() {
+			var data = google.visualization.arrayToDataTable([
+			['Country', 'icons'],
+			['Colombia','none'],
+			['Argentina','ifm']
+			]);
+
+			var options = {
+				showTip: true,
+               	icons: {
+                  ifm: {
+                     normal: 'data/igg/ifm.png',
+                     selected: '/Users/javbru/Documents/MIUN/Presentations/iggesund/www/minimal/data/igg/ifm.png'
+                  },
+               }	
+				
+			};
+
+			var chart = new google.visualization.GeoChart(document.getElementById('argentina'));
+
+			chart.draw(data, options);
+		}
+
+		google.charts.setOnLoadCallback(drawGermMap);
+
+		function drawGermMap() {
+			var data = google.visualization.arrayToDataTable([
+			['Country'],
+			['Argentina'],
+			['Colombia'],
+			['Germany']
+			]);
+
+			var options = {
+				// icons: {
+				// 	default: {
+				// 		normal: 'https://icons.iconarchive.com/icons/icons-land/vista-map-markers/48/Map-Marker-Ball-Azure-icon.png',
+				// 		selected: 'https://icons.iconarchive.com/icons/icons-land/vista-map-markers/48/Map-Marker-Ball-Right-Azure-icon.png'
+				// 	}
+				// }
+
+			};
+
+			var chart = new google.visualization.GeoChart(document.getElementById('germany'));
+
+			chart.draw(data, options);
+		}
+
+		google.charts.setOnLoadCallback(drawSweMap);
+
+		function drawSweMap() {
+			var data = google.visualization.arrayToDataTable([
+			['Country'],
+			['Colombia'],
+			['Argentina'],
+			['Germany'],
+			['Sweden']
+			]);
+
+			var options = {};
+
+			var chart = new google.visualization.GeoChart(document.getElementById('sweden'));
+
+			chart.draw(data, options);
+		}
+		</script>
+
+	</head>
+    
+    <body>
+		<script src="dist/BeerSlider.js"></script>
+		<script>
+			new BeerSlider(document.getElementById('slider'));
+		</script>
+		<style>
+			.reveal .slides section .fragment.fade-down {
+				opacity: 1;
+				visibility: visible;
+			}
+			.reveal .slides section .fragment.fade-down.visible,
+			.reveal .slides section .fragment.visible:not(.current-fragment) {
+				color: grey;
+			}
+			.reveal .slides section .fragment.fade-down,
+			.reveal .slides section .fragment.current-fragment {
+				color: #1b91ff;
+			}
+		</style>
+		<div class="reveal">
+		<div class="slides">
+	<!-- ======================================================================= -->
+	<section data-transition="slide">	
+		<section data-background="asset/miunFirstslide.svg">
+		<br>
+		<br>
+		<br>
+		<br>
+		<h3 style="color:white;font-family: Fira Sans;"><b>Research continuation</b></h3>
+		<h4 style="color:white;font-family: Fira Sans;">Möte med Johan Lindgren @ Holmens/Iggesund</h4>
+		<p  style="color: whitesmoke;text-align: left;">
+
+			Author: Javier Brugés
+		</p>
+		<p class="positioned" style="color: whitesmoke;text-align-last: left;;" >
+			EKS department.
+			<br>
+			<span id="datetime"></span>
+		</p>
+
+	</section>
+	<section data-background="asset/miunFirstslide.svg">
+		<br>
+		<br>
+		<br>
+		<br>
+		<h3 style="color:white;font-family: Fira Sans;"><b>Interview with Poolia / Permobil</b></h3>
+		<h4 style="color:white;font-family: Fira Sans;">Möte med Mimmi Sohlin och Sofie Cardegren</h4>
+		<p  style="color: whitesmoke;text-align: left;">
+
+			Author: Javier Brugés
+		</p>
+		<p class="positioned" style="color: whitesmoke;text-align-last: left;;" >
+			Customization Design Engineer to Permobil
+			<br>
+			<span id="datetime"></span>
+		</p>
+
+	</section>
+
+<!-- ======================================================================= -->
+<section data-transition="slide", data-background="rgb(255,255,255)">
+	<h4 style=color:#1b91ff;>
+		Personal background
+	</h4>
+	<div style="font-size-adjust: inherit; font-size: medium;">
+		<table class="reveal">
+			<tr>
+				<td style="position:static; width:25%; height:70%; margin:0 auto;">
+					<p style="display: block; font-size: 80%;" class="fragment" data-fragment-index="0" >B.Sc. Electrical Engineer (2008)</p>
+					<p style="display: block; font-size: 80%;" class="fragment" data-fragment-index="1" >Field application engineer / ifm electronic (2008 - 2012)</p>
+					<p style="display: block; font-size: 80%;" class="fragment" data-fragment-index="2" >M.Sc. Optics and photonics (2015) / KIT </p>		
+					<p style="display: block; font-size: 80%;" class="fragment" data-fragment-index="3" >PhD(Licentiate) in Electronics  / Mittuniversitetet </p>	
+				</td>
+				<td style="position:static; width:60%; height:70%; margin:0 auto;">
+					<div class="fragment fade-in-then-out" data-fragment-index="0" style="position: absolute;top: 15%;left: 30%;">
+						<div id="colombia" style="width: 800px; height: 500px;"></div>
+				
+					</div>
+					<div class="fragment fade-in-then-out" data-fragment-index="1" style="position: absolute;top: 15%;left: 30%;">
+						<div id="argentina" style="width: 800px; height: 500px;"></div>
+				
+					</div>	
+					<div class="fragment fade-in-then-out" data-fragment-index="2" style="position: absolute;top: 15%;left: 30%;">
+						<div id="germany" style="width: 800px; height: 500px;"></div>
+				
+					</div>
+					<div class="fragment fade-in-then-out" data-fragment-index="3" style="position: absolute;top: 15%;left: 30%;">
+						<div id="sweden" style="width: 800px; height: 500px;"></div>
+				
+					</div>
+				</td>
+			</tr>
+		</table>
+		<div class="fragment" data-fragment-index="1" style="position: absolute;top: 80%;left: 30%;">
+			<figure>
+					<img src="data/igg/ifm.png"
+					width="50px">
+					<!-- <figcaption  style=color:#1b91ff;></figcaption> -->
+	
+			</figure>
+		</div>
+		<div class="fragment" data-fragment-index="2" style="position: absolute;top: 50%;left: 68%;">
+			<figure>
+					<img src="data/igg/ifm.png"
+					width="50px">
+					<!-- <figcaption  style=color:#1b91ff;></figcaption> -->
+	
+			</figure>
+		</div>
+		<div class="fragment" data-fragment-index="2" style="position: absolute;top: 50%;left: 73%;">
+			<figure>
+					<img src="data/igg/zeiss.jpg"
+					width="50px">
+					<!-- <figcaption  style=color:#1b91ff;></figcaption> -->
+	
+			</figure>
+		</div>
+		<div class="fragment" data-fragment-index="3" style="position: absolute;top: 40%;left: 60%;">
+			<figure>
+					<img src="data/igg/miun.png"
+					
+					width="50px">
+					<!-- <figcaption  style=color:#1b91ff;></figcaption> -->
+	
+			</figure>
+		</div>
+	</div>
+
+	<aside class="notes">
+		<p>
+			The optical system used for the experiments is described in the article: X. Tu, O. Spires, X. Tian, N. Brock, R. Liang, and S. Pau, "Division of amplitude RGB full-Stokes camera using micro-polarizer arrays: erratum," Opt. Express 26, 4192-4193 (2018).<br>
+			<a href="https://www.osapublishing.org/oe/abstract.cfm?uri=oe-26-4-4192"> Link to article</a>
+		</p>
+	</aside>
+</section>
+
+<!-- ======================================================================= -->
+<section data-transition="slide", data-background="rgb(255,255,255)">
+	<h4 style=color:#1b91ff;>
+		Polarization for industrial applications
+	</h4>
+	<div style="font-size-adjust: inherit; font-size: medium;">
+		<table class="reveal">
+			<tr>
+				<td style="position:static; width:60%; height:70%; margin:0 auto;">
+                    <div class="fragment" data-fragment-index="0" style="position: absolute;top: 15%;left: 0%;">
+                        <figure>
+                                <img src="data/scope/FirstSlide2019.png"
+                                width="800px">
+                                <!-- <figcaption  style=color:#1b91ff;></figcaption> -->
+                
+                        </figure>
+                    </div>
+                </td>
+                <td style="position:static; width:35%; height:70%; margin:0 auto;">
+					<p style="display: block; font-size: 80%;" class="fragment" data-fragment-index="0" >Highly specular</p>
+					<p style="display: block; font-size: 80%;" class="fragment" data-fragment-index="1" >PE Coating - Transparent unless optical elements involved or illumination is affected</p>
+					<p style="display: block; font-size: 80%;" class="fragment" data-fragment-index="2" >Need to detect the coating to measure</p>		
+				</td>
+			</tr>
+        </table>
+        
+        <p style="display: block; font-size: 1.80em;" class="fragment" data-fragment-index="3" >Polarization: 
+            material sensitive, used in ellipsometry to measure coating thickness, refractive index and optical properties</p>
+        <p style="display: block; font-size: 1.80em;" class="fragment" data-fragment-index="3" >online for Machine vision to detect/elliminate haze or unwnated illumination effects</p>
+    </div>
+	
+	<!-- <div class="reveal">
+		<img src="data/igg/miun.png" alt="before">
+		<img src="data/igg/miun.png" alt="after">
+	</div> -->
+	
+	<!-- <div class="fragment" data-fragment-index="0" style="position: absolute;top: 15%;left: 0%;">
+		<p class="fragment" data-fragment-index="1">What? - Critical parameters and surface texture.</p>
+		<p class="fragment" data-fragment-index="1">Why? - Controlling parameters in online/inline.</p>
+		<p class="fragment" data-fragment-index="1">How? - Transfer parameters in an real time optical system.</p>
+	</div> -->
+	
+	<aside class="notes">
+		<p>
+			The optical system used for the experiments is described in the article: X. Tu, O. Spires, X. Tian, N. Brock, R. Liang, and S. Pau, "Division of amplitude RGB full-Stokes camera using micro-polarizer arrays: erratum," Opt. Express 26, 4192-4193 (2018).<br>
+			<a href="https://www.osapublishing.org/oe/abstract.cfm?uri=oe-26-4-4192"> Link to article</a>
+		</p>
+	</aside>
+</section>
+
+<!-- ======================================================================= -->
+<section data-transition="slide", data-background="rgb(255,255,255)">
+	<h4 style=color:#1b91ff;>
+		Material and geometrical sensitivity of polarization
+	</h4>
+	<div style="font-size-adjust: inherit; font-size: medium;">
+		<table class="reveal">
+			<tr>
+                <td style="position:static; width:35%; height:70%; margin:0 auto;">
+					<p style="display: block; font-size: 80%;" class="fragment" data-fragment-index="0" >Case study: SSAB plate / Defect</p>
+					<p style="display: block; font-size: 80%;" class="fragment" data-fragment-index="1" >PE Plastic tape on top of the product / no high contrast on the camera</p>
+					<p style="display: block; font-size: 80%;" class="fragment" data-fragment-index="2" >Geometry of the defect / Not visible for a normal camera</p>		
+                </td>
+                
+				<td style="position:static; width:60%; height:70%; margin:0 auto;">
+                    <div class="fragment" data-fragment-index="0" style="position: absolute;
+                    top: 15%;left: 35%;">
+                        <figure>
+                                <img src="data/igg/L45pInt.png"
+                                width="600px">
+                                <!-- <figcaption  style=color:#1b91ff;></figcaption> -->
+                
+                        </figure>
+                    </div>
+                    <div class="fragment" data-fragment-index="2" style="position: absolute;
+                    top: 15%;left: 35%;">
+                        <figure>
+                                <img src="data/igg/L45pDoP.png"
+                                width="600px">
+                                <!-- <figcaption  style=color:#1b91ff;></figcaption> -->
+                
+                        </figure>
+                    </div>
+                </td>
+
+			</tr>
+        </table>
+    </div>
+	
+	<!-- <div class="reveal">
+		<img src="data/igg/miun.png" alt="before">
+		<img src="data/igg/miun.png" alt="after">
+	</div> -->
+	
+	<!-- <div class="fragment" data-fragment-index="0" style="position: absolute;top: 15%;left: 0%;">
+		<p class="fragment" data-fragment-index="1">What? - Critical parameters and surface texture.</p>
+		<p class="fragment" data-fragment-index="1">Why? - Controlling parameters in online/inline.</p>
+		<p class="fragment" data-fragment-index="1">How? - Transfer parameters in an real time optical system.</p>
+	</div> -->
+	
+	<aside class="notes">
+		<p>
+			The optical system used for the experiments is described in the article: X. Tu, O. Spires, X. Tian, N. Brock, R. Liang, and S. Pau, "Division of amplitude RGB full-Stokes camera using micro-polarizer arrays: erratum," Opt. Express 26, 4192-4193 (2018).<br>
+			<a href="https://www.osapublishing.org/oe/abstract.cfm?uri=oe-26-4-4192"> Link to article</a>
+		</p>
+	</aside>
+</section>
+
+<!-- ======================================================================= -->
+<section data-transition="slide", data-background="rgb(255,255,255)">
+	<h4 style=color:#1b91ff;>
+		In our most recent article
+	</h4>
+	<div style="font-size-adjust: inherit; font-size: medium;">
+		<table class="reveal">
+			<tr>
+                <td style="position:static; width:35%; height:70%; margin:0 auto;">
+					<p style="display: block; font-size: 80%;" class="fragment" data-fragment-index="0" >Case of detection of PE over paperboard</p>
+					<p style="display: block; font-size: 80%;" class="fragment" data-fragment-index="1" >PE High accuracy rate</p>
+                    <p style="display: block; font-size: 80%;" class="fragment" data-fragment-index="2" >High-spatial resolution</p>
+                    <p style="display: block; font-size: 80%;" class="fragment" data-fragment-index="2" >Can provide metrics of polarization that can be used in quality control too</p>			
+                </td>
+                
+				<td style="position:static; width:60%; height:70%; margin:0 auto;">
+                    <div class="fragment" data-fragment-index="0" style="position: absolute;
+                    top: 15%;left: 35%;">
+                        <figure>
+                                <img src="data/igg/finalClassPEnonPE.svg"
+                                width="600px">
+                                <!-- <figcaption  style=color:#1b91ff;></figcaption> -->
+                
+                        </figure>
+                    </div>
+                </td>
+
+			</tr>
+        </table>
+    </div>
+	
+	<!-- <div class="reveal">
+		<img src="data/igg/miun.png" alt="before">
+		<img src="data/igg/miun.png" alt="after">
+	</div> -->
+	
+	<!-- <div class="fragment" data-fragment-index="0" style="position: absolute;top: 15%;left: 0%;">
+		<p class="fragment" data-fragment-index="1">What? - Critical parameters and surface texture.</p>
+		<p class="fragment" data-fragment-index="1">Why? - Controlling parameters in online/inline.</p>
+		<p class="fragment" data-fragment-index="1">How? - Transfer parameters in an real time optical system.</p>
+	</div> -->
+	
+	<aside class="notes">
+		<p>
+			The optical system used for the experiments is described in the article: X. Tu, O. Spires, X. Tian, N. Brock, R. Liang, and S. Pau, "Division of amplitude RGB full-Stokes camera using micro-polarizer arrays: erratum," Opt. Express 26, 4192-4193 (2018).<br>
+			<a href="https://www.osapublishing.org/oe/abstract.cfm?uri=oe-26-4-4192"> Link to article</a>
+		</p>
+	</aside>
+</section>
+<!-- ======================================================================= -->
+
+<!-- ======================================================================= -->
+<section data-transition="slide",  data-background="rgb(255,255,255)">
+	<div  style="position: absolute;
+                    top: 15%;left: 35%;">
+	<object     width="700"
+    height="700"
+	data="/Users/javbru/Documents/MIUN/Presentations/iggesund/www/minimal/data/testHTMLplotly.html"></object></div>
+</section>
+<!-- ======================================================================= -->
+<script src="js/reveal.js"></script>
+
+<script>
+	// More info about config & dependencies:
+	// - https://github.com/hakimel/reveal.js#configuration
+	// - https://github.com/hakimel/reveal.js#dependencies
+	Reveal.initialize({
+		width: 1280,
+		height: 720,
+		margin: 0.0,
+		history: true,
+		slideNumber: true,
+		showNotes: false,
+		progress: true,
+		transition: 'none',
+		math: {
+			// mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js',
+			config: 'TeX-AMS_HTML-full',
+			TeX: {
+				Macros: {
+					R: '\\mathbb{R}',
+					set: [ '\\left\\{#1 \\; ; \\; #2\\right\\}', 2 ]
+				}
+			}
+		},
+		dependencies: [
+			{ src: 'plugin/markdown/marked.js' },
+			{ src: 'plugin/markdown/markdown.js' },
+			{ src: 'plugin/zoom-js/zoom.js', async: true },
+			{ src: 'plugin/notes/notes.js', async: false },
+			{ src: 'plugin/highlight/highlight.js', async: true },
+			{ src: 'plugin/math/math.js', async: true },
+			{ src: 'minimal/plugin/reveald3/reveald3.js' }
+		]
+	});
+</script>
+<script>
+	var dt = new Date();
+	document.getElementById("datetime").innerHTML = dt.toLocaleDateString();
+</script>
+  <!-- init -->
+  <script>
+    new BeerSlider(document.getElementById('slider'));
+  </script>
+		<!-- <script type="text/x-mathjax-config">
+			MathJax.Hub.Config({ TeX: { extensions: ["color.js"] }});
+		</script> -->
+    </body>
+</html>
+
+
+<!-- References -->
+<!-- ----------------------------------- -->
+<!-- Frogs:  -->
+<!-- http://www.bobatkins.com/photography/tutorials/polarizers.html -->
+<!-- ----------------------------------- -->

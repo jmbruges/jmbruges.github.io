@@ -1,0 +1,1080 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>East Asian typography on the modern web</title>
+    <meta name="description" content="This talk will cover what is currently possible for East Asian typography with CSS, but also touch upon potential solutions for its existing challenges and invite attendees to ponder how different writing systems are adapting to the digital world.">
+
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/reveal.css">
+    <link rel="stylesheet" href="css/theme/jing.css">
+    <link rel="stylesheet" href="lib/css/monokai.css">
+
+    <script>
+      var link = document.createElement( 'link' );
+      link.rel = 'stylesheet';
+      link.type = 'text/css';
+      link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+      document.getElementsByTagName( 'head' )[0].appendChild( link );
+    </script>
+  </head>
+
+  <body>
+    <div class="reveal">
+      <div class="slides">
+        <section data-background="#007bc3">
+          <h1 style="display:flex;align-items:center;color:#fff">
+            <span>East Asian typography on the modern web</span>
+            <span class="j-vert" lang="zh-hans">网络时代的汉字排版</span>
+          </h1>
+          <p><small>By <a href="https://www.chenhuijing.com/">Chen Hui Jing</a> / <a href="http://twitter.com/hj_chen">@hj_chen</a></small></p>
+          <aside class="notes">Hello TypeTech meetup folks! This is my first ever typography event so I'm pretty excited to be here. Big thank you to the organisers for having me and giving me this opportunity to share with all of you a topic I'm particularly passionate about.</aside>
+        </section>
+
+        <section>
+          <div class="intro-grid">
+            <span class="emoji" role="img" tabindex="0" aria-label="Malaysia">&#x1F1F2;&#x1F1FE;</span>
+            <span class="emoji" role="img" tabindex="0" aria-label="alien monster">&#x1F47E;</span>
+            <span class="emoji" role="img" tabindex="0" aria-label="basketball">&#x1F3C0;</span>
+            <span class="emoji" role="img" tabindex="0" aria-label="bicycle">&#x1F6B2;</span>
+            <span class="emoji" role="img" tabindex="0" aria-label="paintbrush">&#x1F58C;&#xFE0F;</span>
+            <span class="emoji" role="img" tabindex="0" aria-label="sneaker">&#x1F45F;</span>
+            <span class="emoji" role="img" tabindex="0" aria-label="laptop computer">&#x1F4BB;</span>
+            <span class="emoji" role="img" tabindex="0" aria-label="pen">&#x1F58A;&#xFE0F;</span>
+            <span class="emoji" role="img" tabindex="0" aria-label="studio microphone">&#x1F399;</span>
+            <span class="emoji" role="img" tabindex="0" aria-label="fox">&#x1F98A;</span>
+            <span class="emoji" role="img" tabindex="0" aria-label="avocado">&#x1F951;</span>
+            <span class="emoji" role="img" tabindex="0" aria-label="person climbing">&#x1F9D7;</span>
+            <span class="emoji" role="img" tabindex="0" aria-label="Rainbow flag">&#x1F3F3;&#xFE0F;&#x200D;&#x1F308;</span>
+            <div style="display:flex;flex-direction:column;align-items:center;justify-content:center">
+              <img data-src="img/name.svg" alt="Chen Hui Jing" class="plain" style="max-height:25vh">
+              <div>
+                <img data-src="img/avatar.jpg" alt="Jing" style="border-radius:50%;max-height:40vh">
+              </div>
+              <a href="https://www.twitter.com/hj_chen">@hj_chen</a>
+            </div>
+          </div>
+          <aside class="notes">My name is Hui Jing, and I'm simple enough that these emojis paint a fairly comprehensive picture of who I am as a person. If you are unfamiliar with Chinese names, our family names come first, followed by our first names. I happen to be fluent in both English and Chinese, so when I talk a bit more about East Asian languages later during the talk, I will mostly reference Chinese.</aside> 
+        </section>
+
+        <section>
+          <section data-background-image="img/writing.jpg">
+            <aside class="notes">
+              <p>Before we get into the talk proper, where we'll be looking at what current web technologies offer for typesetting in the browser, I'd like everyone to just give a think about information technology. Since we are often said to be living in the information age right now.</p>
+              <p>Information technology deals with the storage and retrieval of information, the extraction of higher levels of meaning from a collection of information and the transmission of information over large distances.</p>
+              <p>Writing is the first information technology humans ever developed. And writing was so flexible. All you needed was a surface and an implement to create marks on that surface. Vincent Steer, founder of the British Typographers' Guild, had said that the character of any alphabet is dictated by the materials used in its expression.</p>
+              <p>Cuneiform writing was made by using a wedge-shaped tool that was pressed into wet clay, the Egyptians wrote on papyrus with a reed pen, making their lines were soft and flowy. Chinese writing centred around the brush, and this too informed how Han characters evolved over time.</p>
+            </aside>
+          </section>
+
+          <section data-background-image="img/technology.jpg">
+            <aside class="notes">
+              <p>Technological advancement can generally be thought of as humanity's solution for producing more output for less effort. The advancement of information technology sought to reproduce writing at scale, from employing larger numbers of humans to copy scripts to the development of printing and digital technology.</p>
+              <p>But with every increase in productivity, significant trade-offs were made. The techniques that won out over the course of human civilisation shape how we live today. There are a huge number of factors that came into play but what is undeniable is that modern day digital technology suits a particular style of writing system over others.</p>
+              <p>I have no idea what an alternate history would look like because my reality is here and now. It's as if you're asking a person who has been colour-blind their whole life to imagine what green is. Science fiction writers probably do a better job of this, but I do wonder how different our lives would be if digital technology was pioneered in a different region.</p>
+            </aside>
+          </section>
+        </section>
+
+        <section>
+          <h2>Overview</h2>
+          <ol style="list-style-type:cjk-decimal;font-size:1.5em">
+            <li class="fragment">Recognising the characters</li>
+            <li class="fragment">Displaying the characters</li>
+            <li class="fragment">Laying out the characters</li>
+          </ol>
+          <aside class="notes">I've structured the talk broadly into three parts, starting with how digital computers recognise characters and render them on a screen, followed by how we can display them and lay them out in an aesthetically pleasing manner.</aside>
+        </section>
+
+        <section>
+          <section>
+            <h2>Character encoding</h2>
+            <figure>
+              <img class="plain"  data-src="img/font-forge.jpg" alt="Screenshot of FontForge">
+              <figcaption style="font-style:normal">Encoding options available in FontForge</figcaption>
+            </figure>
+            <aside class="notes">
+              <p>The first encoding standard was the American Standard Code for Information Interchange (ASCII), which was originally based on the English alphabet and developed from telegraph code.</p>
+              <p>Computer architecture at the time was largely 8-bit, while ASCII encoded characters in 7 bits, for the original 128 characters. There was capacity for another 128 characters and when computers reached countries outside America, everyone did their own thing to cater for their own language and character requirements.</p>
+            </aside>
+          </section>
+
+          <section>
+            <h2>Encoding incompatibility</h2>
+            <div class="l-double">
+              <img class="plain" style="max-height:40vh" data-src="img/encoding-error.png" alt="Analogue fonts">
+              <img class="plain" style="max-height:40vh" data-src="img/encoding-error2.png" alt="Digital fonts">
+            </div>
+            <div class="l-double">
+              <img class="plain" style="max-height:40vh" data-src="img/encoding-error4.png" alt="Analogue fonts">
+              <img class="plain" style="max-height:40vh" data-src="img/encoding-error3.png" alt="Digital fonts">
+            </div>
+            <aside class="notes">
+              <p>Writing systems utilising Han characters consist of tens of thousands of glyphs. These were never going to fit into 8 bits. Local encoding systems like the Chinese Guobiao and the Taiwanese Big5 were developed to handle Chinese characters.</p>
+              <p>Japan even created multiple systems for Japanese depending on the hardware, but the systems were not compatible with one another. The Japanese even have a term for the garbled output caused by text decoded with an unintended character encoding, called Mojibake (文字化け).</p>
+              <p>This issue is less pronounced today with the widespread adoption of Unicode, but it is not solved. For example, Burmese text sometimes still doesn't display correctly on Facebook.</p>
+            </aside>
+          </section>
+
+          <section>
+            <h2>Declaring character encodings for the web</h2>
+            <div class="l-double">
+              <pre><code>&lt;!doctype html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+&lt;meta charset="utf-8"/&gt;
+...</code></pre>
+              <pre><code>@charset "utf-8";
+/* all the styles for your web page */</code></pre>
+            </div>
+            <aside class="notes">The recommendation from the W3C is to always save your pages as UTF-8, and to always declare the encoding of your document via the <code> charset</code> attribute on meta tags that go into your document's <code>head</code> element. For CSS, you would use an <code>@charset</code> declaration at the top of your stylesheet.</aside>
+          </section>
+        </section>
+
+        <section>
+          <section>
+            <h2>Text rendering on electronic screens</h2>
+            <img class="plain" data-src="img/rendering-engine.png" alt="Diagram of code to text on screen">
+            <aside class="notes">
+              <p>Every computer's operating system has a text rendering engine, which is responsible for rasterising the font outlines for display on the screen. Browsers' layout engines will defer to the operating system's text rendering engine. If there are multiple text rendering engines, the browser can pick which to use. This is why text looks different on Mac and Windows, and sometimes even vary on different browsers on the same machine.</p>
+              <p>Electronic displays these days are fairly high resolution, but a huge majority of the screens we encounter are raster displays. Which means everything we see on screens are made up of individual discrete pixels. We've just managed to pack a lot more pixels onto a screen than we used to.</p>
+              <p></p>
+            </aside>
+          </section>
+
+          <section data-background-image="img/bitmap-fonts.png" data-background-size="contain">
+            <h2 class="txtbg">Bitmap fonts</h2>
+            <aside class="notes">The earliest digital fonts were pixel-based bitmaps, okay for low-resolution screens, but problematic when content needed to be printed. Because printers were high resolution.</aside>
+          </section>
+
+          <section>
+            <h2>PostScript</h2>
+            <figure>
+              <img class="plain" data-src="img/postscript.png" alt="Structure of a Type 1 font program and dictionary structure which is created when it executes">
+              <figcaption>Type 1 font program</figcaption>
+            </figure>
+            <aside class="notes">PostScript was the solution that Adobe released back in 1984. It was the first ever vector font format and did really well on the market. And after 3 decades, Adobe has announced that they would end support for Type 1 in January 2023.</aside>
+          </section>
+
+          <section>
+            <h2>The Font Wars by Typography.Guru</h2>
+            <iframe width="960" height="540" src="https://www.youtube.com/embed/5X9Dj7tBlkg" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <p>https://youtu.be/5X9Dj7tBlkg</p>
+            <aside class="notes">Typography.Guru released an excellent video which takes a look back at the time period during which the industry was transitioning from bitmap fonts to vector fonts.</aside>
+          </section>
+
+          <section>
+            <h2>Font formats for web use</h2>
+            <table>
+              <tr>
+                <td>WOFF2 (Web Open Font Format 2)</td>
+                <td style="line-height:0">
+                  <img class="plain l-logo" data-src="img/microsoft.svg">
+                  <img class="plain l-logo" data-src="img/mozilla.svg">
+                  <img class="plain l-logo" data-src="img/opera.svg">
+                </td>
+              </tr>
+              <tr>
+                <td>WOFF (Web Open Font Format)</td>
+                <td style="line-height:0">
+                  <img class="plain l-logo" data-src="img/microsoft.svg">
+                  <img class="plain l-logo" data-src="img/mozilla.svg">
+                  <img class="plain l-logo" data-src="img/opera.svg">
+                </td>
+              </tr>
+              <tr>
+                <td>OTF (OpenType)</td>
+                <td style="line-height:0">
+                  <img class="plain l-logo" data-src="img/microsoft.svg">
+                  <img class="plain l-logo" data-src="img/adobe.svg">
+                </td>
+              </tr>
+              <tr>
+                <td>TTF (TrueType)</td>
+                <td style="line-height:0">
+                  <img class="plain l-logo" data-src="img/microsoft.svg">
+                  <img class="plain l-logo" data-src="img/apple.svg">
+                </td>
+              </tr>
+              <tr>
+                <td>EOT (Embedded Open Type)</td>
+                <td style="line-height:0">
+                  <img class="plain l-logo" data-src="img/microsoft.svg">
+                </td>
+              </tr>
+              <tr>
+                <td>SVG (Scalable Vector Graphics)</td>
+                <td style="line-height:0">
+                  <img class="plain l-logo" data-src="img/svg.svg">
+                </td>
+              </tr>
+            </table>
+            <aside class="notes">Apple and Microsoft also got into the game to challenge Adobe's font monopoly and over the years, many font formats were released. Currently we're mostly seeing OpenType and WOFF being widely used.</aside>
+          </section>
+
+          <section data-background-image="img/chinese-font.jpg">
+            <h2 class="txtbg">Chinese typeface design</h2>
+            <aside class="notes">
+              <p>Designing Chinese characters is significantly more challenging as compared to Latin-based alphabets or Arabic numerals for a number of reasons. Firstly, the sheer volume of glyphs required for just for daily use alone is around 7000, but there are more than 50000 in existence.</p>
+              <p>Such a monumental task, if undertaken by a single experienced designer working full time would probably take at least 3 years to complete the 6763 characters defined in the Chinese national standard. Most foundries employ a team working closely together over 3 to 5 months. However, this also increases the risk of inconsistency in structure and style across such a large volume of characters.</p>
+              <p>The structure of Chinese characters are also more complex, often having more than 10 strokes and intersection points. Quite a challenge from a rendering perspective as well.</p>
+            </aside>
+          </section>
+
+          <section>
+            <h2>Web fonts</h2>
+            <figure>
+              <img class="plain" data-src="img/css2-font.jpg" alt="Webfonts early public working draft">
+              <figcaption>Earliest reference of webfonts I could find (21-Jul-1997)</figcaption>
+            </figure>
+            <aside class="notes">When the web first started, browsers could only choose between fonts that were already installed on their users host machines. But in a revision to the CSS specification, a proposal was made for allowing browsers to load fonts from an external source via a URL. This proposal was eventually made a reality when browser vendors picked it up and implemented it.</aside>
+          </section>
+
+          <section>
+            <h2>Font stacks</h2>
+            <pre><code>/* This text is in Lucida Grande */
+.sans { 
+  font-family: Lucida Grande,Lucida Sans Unicode,Lucida Sans,Geneva,Verdana,sans-serif; 
+}
+
+/* A typical Chinese font stack, declare Latin fonts first */
+.zh-hans {
+  font-family: Tahoma, Helvetica, Arial, "Microsoft Yahei", "微软雅黑", STXihei, "华文细黑", sans-serif;
+}</code></pre>
+            <aside class="notes">
+              <p>To specify what font your website is using, we use the font-family property in CSS. This has been around since the beginning.</p>
+              <p>Most of the time, system fonts will support an extended character set covering a majority of languages. Which is why the concept of font stacks matter when using web fonts. The order of the declared fonts makes a difference, as the browser goes through them from left to right.</p>
+              <p>Ideally, your font stack should be made up of fonts that share similar characteristics, so it is not <strong>that</strong> obvious a fallback has been invoked for a particular missing glyph. Go for similar visual style, x-heights and stroke weights.</p>
+            </aside>
+          </section>
+
+          <section>
+            <h2>Subset fail</h2>
+            <div class="l-double" style="justify-items:center">
+              <img data-src="img/subset-fail.png" style="max-height:75vh" alt="Subsetting gone wrong on Medium for letters beyond the basic Latin set" class="plain">
+              <img data-src="img/subset-fail2.jpg" style="max-height:75vh" alt="Subsetting gone wrong on Medium for Lithuanian characters" class="plain">
+            </div>
+            <aside class="notes">Otherwise you may end up with this tragic situation that still happens on this relatively popular blogging site. Like my friend, Vadim, replied on my Twitter thread, it's not lethal, but it sure is ugly.</aside>
+          </section>
+
+          <section data-background-image="img/toufu.png" data-background-size="cover">
+            <img style="width:85vh" class="plain" data-src="img/biang.svg">
+            <aside class="notes">
+              <p>If a character cannot be displayed using any font at all, for example, this particularly infamous Chinese character, biang, you'll end up with a symbol of the missing glyph, or what we endearingly call tofu characters.</p>
+              <p>Sometimes you'll see the corresponding character code in a rectangle, or simple a blank rectangle. Personally, I see much less of these, compared to a decade ago, thanks to the widespread use of Unicode.</p>
+            </aside>
+          </section>
+
+          <section>
+            <h2>@font-face rule</h2>
+            <pre><code>@font-face {
+  font-family: 'Bellato';
+  src: url('Bellota-Regular.woff2') format('woff2'),
+       url('Bellota-Regular.woff') format('woff');
+}</code></pre>
+            <div class="l-double">
+              <p class="ciu_embed" style="width:100%" data-feature="woff" data-periods="future_1,current,past_1,past_2" data-accessible-colours="true">
+                <a href="http://caniuse.com/#feat=woff">
+                  <picture>
+                    <source type="image/webp" srcset="https://caniuse.bitsofco.de/image/woff.webp">
+                    <img class="plain" src="https://caniuse.bitsofco.de/image/woff.png" alt="Data on support for the woff feature across the major browsers from caniuse.com">
+                  </picture>
+                </a>
+              </p>
+              <p class="ciu_embed" style="width:100%" data-feature="woff" data-periods="future_1,current,past_1,past_2" data-accessible-colours="true">
+                <a href="http://caniuse.com/#feat=woff">
+                  <picture>
+                    <source type="image/webp" srcset="https://caniuse.bitsofco.de/image/woff.webp">
+                    <img class="plain" src="https://caniuse.bitsofco.de/image/woff.png" alt="Data on support for the woff feature across the major browsers from caniuse.com">
+                  </picture>
+                </a>
+              </p>
+            </div>
+            <aside class="notes">
+              <p>Web fonts are implemented in CSS with the <code>@font-face</code> rule, where you can declare a list of different formats for your font of choice. Given the support status these days, it's fairly safe to use just WOFF and WOFF2.</p>
+              <p>Though there are many descriptors for declaring a web font with <code>@font-face</code>, only the <code>font-family</code> and <code>src</code>, are mandatory.</p>
+              <p>The <code>font-family</code> descriptor works purely like a label, so we can reference the font data via CSS. So maybe you're using Helvetica, you don't have to put “Helvetica” as the descriptor. The <code>src</code> descriptor tells the browser where to find the font data, it could be an external URL, or a local font.</p>
+            </aside>
+          </section>
+
+          <section>
+            <h2>Anatomy of an <code>@font-face</code> rule</h2>
+            <pre><code>@font-face {
+  font-family: &lt;family-name&gt;;
+  src: [ &lt;url&gt; [format(&lt;string&gt; #)]? | &lt;font-face-name&gt; ] #;
+  font-style: normal | italic | oblique ;
+  font-weight: normal | bold | 100 | 200 | 300 | 400 | 500 | 600 | 700 | 800 | 900;
+  font-stretch: normal | ultra-condensed | extra-condensed | condensed | semi-condensed | semi-expanded | expanded | extra-expanded | ultra-expanded;
+  unicode-range: &lt;urange&gt; #;
+  font-variant: normal | none | [ &lt;common-lig-values&gt; || &lt;discretionary-lig-values&gt; || &lt;historical-lig-values&gt; || &lt;contextual-alt-values&gt; || stylistic(&lt;feature-value-name&gt;) || historical-forms || styleset(&lt;feature-value-name&gt; #) || character-variant(&lt;feature-value-name&gt; #) || swash(&lt;feature-value-name&gt;) || ornaments(&lt;feature-value-name&gt;) || annotation(&lt;feature-value-name&gt;) || [ small-caps | all-small-caps | petite-caps | all-petite-caps | unicase | titling-caps ] || &lt;numeric-figure-values&gt; || &lt;numeric-spacing-values&gt; || &lt;numeric-fraction-values&gt; || ordinal || slashed-zero || &lt;east-asian-variant-values&gt; || &lt;east-asian-width-values&gt; || ruby ];
+  font-feature-settings: normal | &lt;feature-tag-value&gt; #;
+}</code></pre>
+            <aside class="notes">This is the full set of possible descriptors you could include in your @font-face rule. Descriptors for style, weight and stretch, are used to match styles to a particular typeface in later CSS declarations.</aside>
+          </section>
+
+          <section>
+            <video loop autoplay>
+              <source data-src="img/font-highlighter.mp4" type="video/mp4">
+              Sorry, your browser doesn't support embedded img, 
+              but don't worry, you can <a href="img/font-highlighter.mp4">download it</a>
+              and watch it with your favourite video player!
+            </video>
+            <p><small>Slides for <a href="https://speak.wgao19.cc/slides/1904-mixed-and-blended/#/9/3"><em>This world mixed and blended</em></a> by <a href="https://wgao19.cc/">Gao Wei</a>.</small></p>
+            <aside class="notes">In terms of browser tools, the Firefox Font Tools is the most full-featured tool available right now. How it works is that you can see which fonts are loaded on the page, and which fonts are being loaded for which characters on your page. There's also information about all the fonts on the page in the bottom section there as well.</aside>
+          </section>
+
+          <section>
+            <div class="l-double" style="align-items:center">
+              <img data-src="img/raleway.png" alt="Raleway font specimen" class="plain">
+              <img data-src="img/comfortaa.png" alt="Comfortaa font specimen" class="plain">
+            </div>
+            <aside class="notes">
+              <p>This tool comes in very handy especially for those of you who build multilingual websites or even sites with a handful of foreign words, and you are using a typeface that may not support all the required characters.</p>
+              <p>For example, this round sans-serif is Raleway, designed by the League of Moveable Type. It's pretty nice, in my opinion, but unfortunately, does not support Cyrillic characters. Which is a bummer, if I wanted to use it for a talk I'm giving in Ukraine, for example.</p>
+              <p>So what we can do, is try to find a font that does contain those characters, and somewhat resembles the design of chosen font, then utilise the <code>unicode-range</code> descriptor to create a “composite font”.</p>
+            </aside>
+          </section>
+
+          <section>
+            <pre><code>@font-face {
+  font-family: 'Raleway';
+  src: url('fonts/raleway-regular.woff2') format('woff2'),
+        url('fonts/raleway-regular.woff') format('woff');
+  /* no range specified, defaults to entire range */
+}
+
+@font-face {
+  font-family: 'Raleway';
+  src: url('fonts/comfortaa_regular.woff2') format('woff2'),
+        url('fonts/comfortaa_regular.woff') format('woff');
+  unicode-range: U+0400–U+04FF; /* Unicode range for Cyrillic characters */
+}</code></pre>
+            <aside class="notes">
+              <p>It's called a composite font because it mixes glyphs from different fonts for different scripts. To deal with the fact that <em>Raleway</em> does not support Cyrillic letters, we can use the <code>unicode-range</code> descriptor to tell the browser to load <em>Comfortaa</em>, which is a font that does, when it encounters any Cyrillic characters.</p>
+              <p>Remember that for font-face rules, the font-family is simply a label, so what we've done is create a composite font that uses the name <em>Raleway</em>, but in actuality, loads 2 different font files depending on what characters need to be displayed.</p>
+            </aside>
+          </section>
+
+          <section>
+            <video loop autoplay>
+              <source data-src="img/composite.mp4" type="video/mp4">
+              Sorry, your browser doesn't support embedded videos, 
+              but don't worry, you can <a href="img/composite.mp4">download it</a>
+              and watch it with your favourite video player!
+            </video>
+            <aside class="notes">And the font highlighter reveals what the browser does when it encounters such a scenario. Raleway is the font-family descriptor, but you can see that Firefox has loaded both Raleway and Comfortaa. The font tools can also tell you which font format the browser loaded for a particular run of text.</aside>
+          </section>
+
+          <section data-background-image="img/cjk-glyphs.jpg">
+            <h2 class="txtbg">Source Hans Serif (65,535 glyphs)</h2>
+            <aside class="notes">
+              <p>Most CJK system fonts, short for Chinese, Japanese and Korean, have very good glyph coverage, coming in between 20,000 to 30,000 glyphs. When web fonts were introduced, it allowed developers to send fonts that were not installed on their users' systems via a URL. Font data does take up bandwidth though, and font sizes are dependent on the size of the character set supported by the font.</p>
+              <p>The nature of CJK fonts make them impractical from a performance standpoint as web fonts delivered over the internet. Currently, websites in those languages almost always use system fonts because a typical CJK font can go up to around 16mb.</p>
+            </aside>
+          </section>
+
+          <section>
+            <h2>Subsetting web fonts</h2>
+            <div class="l-multiple">
+              <figure>
+                <img class="plain" data-src="img/font-squirrel.png" alt="Screenshot of Font Squirrel website">
+                <figcaption><a href="https://www.fontsquirrel.com/tools/webfont-generator">Font Squirrel</a></figcaption>
+              </figure>
+              <figure>
+                <img class="plain" data-src="img/fontplop.png" alt="Screenshot of FontPlop interface">
+                <figcaption><a href="https://github.com/matthewgonzalez/fontplop">FontPlop</a></figcaption>
+              </figure>
+              <figure>
+                <img class="plain" data-src="img/font-spider.png" alt="Screenshot of FontSpider website">
+                <figcaption><a href="http://font-spider.org/">Font Spider</a></figcaption>
+              </figure>
+            </div>
+            <aside class="notes">
+              <p>Sub-setting is a potential solution to this problem, where you can choose to only provide a limited range of characters to your users. And there are numerous applications both online and offline that allow you to do this, like the ones shown here.</p>
+              <p>Font services like Monotype and Typekit even offer the option of dynamic sub-setting, where font files are served with only the glyphs needed on each page. However, these solutions have limitations, like losing OpenType features during sub-setting, as well as caching issues, given you're requesting new font files for every page.</p>
+            </aside>
+          </section>
+
+          <section>
+            <h2>Variable fonts</h2>
+            <p class="vfonts">Dragons</p>
+            <div class="l-double" style="justify-items:center;max-width:50%;margin:1em auto">
+              <div style="display:flex;flex-direction:column;width:75%">
+                <input type="range" id="space" name="space" min="100" max="120">
+                <label class="input-spac" for="space">Space</label>
+              </div>
+                
+              <div style="display:flex;flex-direction:column;width:75%">
+                <input type="range" id="weight" name="weight" min="100" max="900">
+                <label class="input-wght" for="weight">Weight</label>
+              </div>
+            </div>
+            <aside class="notes">
+              <p>Variable fonts are a relatively recent development which allow a single font file to contain all the styles and weights the designer intended via variation axes. Developers can then access these options with CSS.</p>
+              <p>Sending a single font file to your users can yield performance benefits, as the overall size of font files is reduced, and fewer file requests are made. However, this still does not alleviate the original problem which Han character sets face.</p>
+            </aside>
+          </section>
+
+          <section>
+            <h2>Progressive Font Enrichment</h2>
+            <blockquote>
+              <p>to enable the ability for <strong>only the required part</strong> of the font be downloaded on any given page, and for subsequent requests for that font to <strong>dynamically ‘patch’</strong> the original download with additional sets of glyphs as required on successive page views—even if they occur on separate sites</p>
+              <br><small>—Jason Pamental on <a href="https://us6.campaign-archive.com/?u=0019faab58713ad49bce9acc3&id=cc4e19f0f6">Web Fonts & Typography News #11</a></small>
+            </blockquote>
+            <aside class="notes">
+              <p>But we could potentially be seeing some breakthroughs in the near future. Currently, there is an industry wide collaboration between Adobe, Apple, Google, Monotype and Mozilla plus a number of type foundries and software vendors, to resolve the issues I just described.</p>
+              <p>In order to tackle the limitations of current font subsetting strategies, this webfont performance super collab is working on a solution that allows the sub-setting of a font request to only what's required on a page, but progressively add on to that original font request for subsequent pages.</p>
+            </aside>
+          </section>
+
+          <section>
+            <h2>Incremental Transfer Demo</h2>
+            <video autoplay controls loop>
+              <source data-src="img/incremental.mp4" type="video/mp4">
+              Sorry, your browser doesn't support embedded img, 
+              but don't worry, you can <a href="img/incremental.mp4">download it</a>
+              and watch it with your favourite video player!
+            </video>
+            <p><small><a href="https://fonts.gstatic.com/experimental/incxfer_demo">Google Fonts’ Incremental Transfer Demo</a></small></p>
+            <aside class="notes">
+             <p>We can see a prototype of this concept in action on the incremental transfer demo by the Google Fonts team. As text is continually added from various different scripts, no less, you can see the vast difference between what we do today, and what could be possible in the future.</p>
+             <p>The savings are quite significant, and much closer to the optimal subset than our current implementation, which sends everything over the wire.</p>
+            </aside>
+          </section>
+
+          <section data-background-image="img/jason.jpg" data-background-size="cover">
+            <h2 class="txtbg">https://rwt.io/newsletter</h2>
+            <aside class="notes">Jason Pamental, web typography expert and invited expert to the W3C Web Fonts working group, first wrote about this in his newsletter, <em>Web Typography News</em>, back in late April 2019. And it's worth subscribing to if web typography is your thing.</aside>
+          </section>
+        </section>
+
+        <section>
+          <section>
+            <h2>Typesetting on the web</h2>
+            <blockquote>
+              <p>Authors should language-tag their content accurately for the best typographic behaviour.</p>
+              <br><small>—CSS Text Module Level 3</small>
+            </blockquote>
+            <aside class="notes">
+              <p>If the medium we are operating in is the web, then our tool for the trade of typesetting is CSS. We are trying to do what folks have been doing since setting type became a thing, some underlying principles hold steadfast but our tools have changed over time.</p>
+              <p>Declaring a content language on an element is one of the most basic things we can do, because it identifies the specific written form of the language to be used in that element, AKA the content writing system.</p>
+              <p>This is important because language and writing system conventions affect lots of typographic effects like line breaking, hyphenation, justification, glyph selection and more.</p>
+              <p>For CSS, language-specific typographic tailorings are only applied when the content language is explicitly declared. So it is in our best interest to tell the browser exactly what language our content is in to ensure a higher quality typographic experience for our users.</p>
+            </aside>
+          </section>
+
+          <section>
+            <h2>OpenType features</h2>
+            <ul style="font-size:65%;column-count:8;column-gap:1.5em">
+              <li>aalt</li>
+              <li>abvf</li>
+              <li>abvm</li>
+              <li>abvs</li>
+              <li>afrc</li>
+              <li>akhn</li>
+              <li>blwf</li>
+              <li>blwm</li>
+              <li>blws</li>
+              <li>calt</li>
+              <li>case</li>
+              <li>ccmp</li>
+              <li>cfar</li>
+              <li>cjct</li>
+              <li>clig</li>
+              <li>cpct</li>
+              <li>cpsp</li>
+              <li>cswh</li>
+              <li>curs</li>
+              <li>cv01 – cv99</li>
+              <li>c2pc</li>
+              <li>c2sc</li>
+              <li>dist</li>
+              <li>dlig</li>
+              <li>dnom</li>
+              <li>dtls</li>
+              <li>expt</li>
+              <li>falt</li>
+              <li>fin2</li>
+              <li>fin3</li>
+              <li>fina</li>
+              <li>flac</li>
+              <li>frac</li>
+              <li>fwid</li>
+              <li>half</li>
+              <li>haln</li>
+              <li>halt</li>
+              <li>hist</li>
+              <li>hkna</li>
+              <li>hlig</li>
+              <li>hngl</li>
+              <li>hojo</li>
+              <li>hwid</li>
+              <li>init</li>
+              <li>isol</li>
+              <li>ital</li>
+              <li>jalt</li>
+              <li>jp78</li>
+              <li>jp83</li>
+              <li>jp90</li>
+              <li>jp04</li>
+              <li>kern</li>
+              <li>lfbd</li>
+              <li>liga</li>
+              <li>ljmo</li>
+              <li>lnum</li>
+              <li>locl</li>
+              <li>ltra</li>
+              <li>ltrm</li>
+              <li>mark</li>
+              <li>med2</li>
+              <li>medi</li>
+              <li>mgrk</li>
+              <li>mkmk</li>
+              <li>mset</li>
+              <li>nalt</li>
+              <li>nlck</li>
+              <li>nukt</li>
+              <li>numr</li>
+              <li>onum</li>
+              <li>opbd</li>
+              <li>ordn</li>
+              <li>ornm</li>
+              <li>palt</li>
+              <li>pcap</li>
+              <li>pkna</li>
+              <li>pnum</li>
+              <li>pref</li>
+              <li>pres</li>
+              <li>pstf</li>
+              <li>psts</li>
+              <li>pwid</li>
+              <li>qwid</li>
+              <li>rand</li>
+              <li>rclt</li>
+              <li>rkrf</li>
+              <li>rlig</li>
+              <li>rphf</li>
+              <li>rtbd</li>
+              <li>rtla</li>
+              <li>rtlm</li>
+              <li>ruby</li>
+              <li>rvrn</li>
+              <li>salt</li>
+              <li>sinf</li>
+              <li>size</li>
+              <li>smcp</li>
+              <li>smpl</li>
+              <li>ss01</li>
+              <li>ss02</li>
+              <li>ss03</li>
+              <li>ss04</li>
+              <li>ss05</li>
+              <li>ss06</li>
+              <li>ss07</li>
+              <li>ss08</li>
+              <li>ss09</li>
+              <li>ss10</li>
+              <li>ss11</li>
+              <li>ss12</li>
+              <li>ss13</li>
+              <li>ss14</li>
+              <li>ss15</li>
+              <li>ss16</li>
+              <li>ss17</li>
+              <li>ss18</li>
+              <li>ss19</li>
+              <li>ss20</li>
+              <li>ssty</li>
+              <li>stch</li>
+              <li>subs</li>
+              <li>sups</li>
+              <li>swsh</li>
+              <li>titl</li>
+              <li>tjmo</li>
+              <li>tnam</li>
+              <li>tnum</li>
+              <li>trad</li>
+              <li>twid</li>
+              <li>unic</li>
+              <li>valt</li>
+              <li>vatu</li>
+              <li>vert</li>
+              <li>vhal</li>
+              <li>vjmo</li>
+              <li>vkna</li>
+              <li>vkrn</li>
+              <li>vpal</li>
+              <li>vrt2</li>
+              <li>vrtr</li>
+              <li>zero</li>
+            </ul>
+            <aside class="notes">
+              <p>OpenType fonts can include an expanded character set and layout features, which gives us much broader linguistic support and more precise typographic control. They can also make multilingual typography easier by allowing multiple language character sets in a single font.</p>
+              <p>For the most part, CSS today provides developers a lot more granular typographic control as compared to the early days. There are CSS properties for adjustments at the character level, at the line level and at the layout level.</p>
+            </aside>s
+          </section>
+
+          <section>
+            <h2>Font feature properties</h2>
+            <table>
+              <tr style="background-color:transparent">
+                <td style="width:30%;vertical-align:top">
+                  <code style="font-size:85%">font-kerning</code>
+                  <img class="plain" data-src="img/kerning.svg">
+                </td>
+                <td style="width:35%;vertical-align:top">
+                  <code style="font-size:85%">font-variant-position</code>
+                  <img class="plain" data-src="img/fv-position.jpg">
+                </td>
+                <td style="width:35%;vertical-align:top">
+                  <code style="font-size:85%">font-variant-position-ligatures</code>
+                  <img class="plain" data-src="img/fv-ligatures.jpg">
+                </td>
+              </tr>
+              <tr>
+                <td style="width:30%;vertical-align:top">
+                  <code style="font-size:85%">font-variant-numeric</code>
+                  <img class="plain" data-src="img/fv-numeric.jpg">
+                </td>
+                <td style="width:35%;vertical-align:top">
+                  <code style="font-size:85%">font-variant-caps</code>
+                  <img class="plain" data-src="img/fv-caps.jpg">
+                </td>
+                <td style="width:35%;vertical-align:top">
+                  <code style="font-size:85%">font-variant-alternates</code>
+                  <img class="plain" data-src="img/fv-alternates.jpg">
+                </td>
+              </tr>
+            </table>
+            <aside class="notes">Font feature properties are what gives developers access to a variety of OpenType features like swashes, ligatures, old-style numerals, as well as language-specific ones. We can toggle them with CSS as long as the font supports them.</aside>
+          </section>
+
+          <section>
+            <h2>Font metrics are crucial</h2>
+            <aside class="notes">
+              <p>To that point, font metrics are measurements of characters in a font and computers use these to determine how to layout characters on a line, things like spacing between lines, positions of sub and superscripts etc. But font metrics aren't mandatory and sometimes type designers don't include them, and that makes it hard for CSS to figure out what to do.</p>
+              <p>This applies for all OpenType features. But when fonts do have these features, we can do interesting things via CSS.</p>
+            </aside>
+          </section>
+
+          <section>
+            <h2><code>font-variant-east-asian</code></h2>
+            <p>Allows control of glyph substitution and sizing in East Asian text</p>
+            <div class="livecode livecode-2p">
+              <div class="result fvea">
+                <p class="han" style="text-align:justify;margin-bottom:1em">一个简体字可能对应多个繁体字，如简体字「发」，其相应的繁体字可能为「發」或「髮」；一个繁体汉字对应多个简体汉字的情况与前者相比数量极少但仍需注意，如繁体字「乾」可能对应简体字「干」或「乾」。繁简汉字的对应关系具体应由上下文决定。</p>
+                <p class="jap" style="font-family:'Kokoro';font-size:1.3em">唖 芦 溢 茨 鰯 嘘 欝 厩 噂</p>
+              </div>
+              <div class="code"><style class="code-editor" contenteditable="true">.fvea .han {
+  font-variant-east-asian: traditional;
+}
+
+.fvea .jap {
+  font-variant-east-asian: jis78;
+}</style></div>
+            </div>
+            <aside class="notes">
+              <p>There's one particular font variant property for East Asian text, allowing us to control glyph substitution and positioning for Han characters.</p>
+              <p>Depending on the language, the same character does not necessarily use the same glyph. This property allows us to toggle between variant glyphs of certain characters.</p>
+            </aside>
+          </section>
+
+          <section>
+            <h2><code>font-language-override</code></h2>
+            <p>To control the use of language-specific glyph substitutions and positioning</p>
+            <div class="l-double">
+             <pre style="white-space:pre-wrap"><code style="font-family:Menlo">&lt;!-- Macedonian lang code --&gt;
+&lt;body lang="mk"&gt;
+  &lt;h4&gt;Члeн 9&lt;/h4&gt;
+  &lt;p&gt;Никoj чoвeк нeмa дa бидe пoдлoжeн нa прoизвoлнo aпсeњe, притвoр или прoгoнувaњe.&lt;/p&gt;
+&lt;/body&gt;</code></pre>
+              <pre><code>body {
+  /* Serbian OpenType language tag */
+  font-language-override: "SRB";
+}</code></pre>
+            </div>
+            <p><small>Example lifted from <a href="https://www.w3.org/TR/css-fonts-4/#propdef-font-language-override">CSS Fonts Module Level 4</a></small></p>
+            <aside class="notes">
+              <p>The user agent will refer to the <code>lang</code> attribute when rendering text but if the selected font lacks support for that language, we can ask the browser to use the typographic conventions of a related language present in the font instead.</p>
+              <p>Here's the markup for some Macedonian text. Imagine that the font being used does not support Macedonian but has characters for Serbian.</p>
+              <p>By setting <code>font-language-override</code> to <code>SRB</code>, the Macedonian text will be rendered with Serbian typographic conventions instead. But still be recognised as Macedonian.</p>
+            </aside>
+          </section>
+
+          <section>
+            <h2>The <code>text-transform</code> property</h2>
+            <div class="livecode livecode-2p">
+              <div class="result txt-trans">
+                <p style="margin-bottom:1em">If I want [flowers], I’m going to send them to myself.</p>
+                <p lang="de" style="margin-bottom:1em">Süße Soßen-Klöße genießen maßgeblich gefräßige preußische Nutznießer.</p>
+                <p lang="gr" style="font-family:'Kochin Regular';margin-bottom:1em">Ουδέν κακόν αμιγές καλού.</p>
+                <p lang="jp">ァィゥェ ォヵㇰヶ</p>
+              </div>
+              <div class="code"><style class="code-editor" contenteditable="true">.txt-trans p {
+  text-transform: normal;
+}</style></div>
+            <aside class="notes">
+              <p>Other than font-feature CSS properties, other text-related CSS properties also have ‘language awareness’, and include values that perhaps most folks aren't aware of.</p>
+              <p>Most of the time we use <code>text-transform</code> for case adjustments and capitalisation. But it actually does take into account numerous language-specific case mapping rules. For example, the German Eszett ß becomes SS in uppercase, or the Greek vowels lose their accent when the entire word is uppercase. Stuff like that.</p>
+              <p><code>full-size-kana</code> converts all small Kana characters to their equivalent full-size Kana, mostly used for ruby annotations.</p>
+            </aside>
+          </section>
+
+          <section>
+            <h2>The <code>text-emphasis</code> property</h2>
+            <div class="livecode livecode-3p">
+              <pre class="markup"><code class="html"><p>We use <em>italics</em> to emphasise words in English, <span lang="zh">但是中文则是用<em>着重号</em></span>.</p></code></pre>
+              <div class="result lang-pc">
+                <p>We use <em>italics</em> to emphasise words in English, <span lang="zh">但是中文则是用<em>着重号</em></span>.</p>
+              </div>
+              <div class="code"><style class="code-editor" contenteditable="true">.lang-pc em:lang(zh) {
+  // font-style: normal;
+  // text-emphasis: dot;
+}</style></div>
+            </div>
+            <aside class="notes">
+              <p>Chinese writing does not have italic styles. To emphasise words, we use a type of punctuation called 着重号. And we can use CSS for this with the <code>text-emphasis</code> property and set a value of dot. There are more values available, like double circle, or triangle. You could put a string in there as well.</p>
+              <p>CSS has this <code>:lang</code> pseudo-class that will recognises the language of the content of an element. So we can use it to identify and apply this property only to Chinese text.</p>
+            </aside>
+          </section>
+
+          <section>
+            <h2><code>text-align</code> & <code>text-justify</code></h2>
+            <ul>
+              <li>Sets the <code>text-align-all</code> and <code>text-align-last</code> properties</li>
+              <li>Describes how the inline-level content of a block is aligned along the inline axis if the content does not completely fill the line box.</li>
+            </ul>
+            <pre><code>text-align: start | end | left | right | center | justify | match-parent | justify-all</code></pre>
+            <p>Values other than <code>justify-all</code> or <code>match-parent</code> are assigned to <code>text-align-all</code> and reset <code>text-align-last</code> to <code>auto</code>.</p>
+            <hr>
+            <p>Selects the justification method used when a line’s alignment is set to justify</p>
+            <pre><code>text-justify: auto | none | inter-word | inter-character</code></pre>
+            <aside class="notes">
+              <p>Text justification is also fairly tricky on the web. Whether we realise it or not, most of us would have encountered 2 major justification algorithms.</p>
+              <p>The Greedy algorithm, which analyses only a single line, and the much more advanced Knuth/Plass algorithm which analyses every line in a paragraph. Design software with advanced typesetting capabilities like InDesign use Knuth/Plass. But browsers, sadly, use the simple one. Probably for performance reasons, maybe? I'm not sure.</p>
+              <p>Although we don't have a robust justification algorithm, CSS Text Level 3 does include the <code>text-justify</code> property to allow some further tweaking of justified text.</p>
+            </aside>
+          </section>
+
+          <section data-background-image="img/justify-bad.png">
+            <aside class="notes">If I search for “text justify web” on Google, the top result is titled <em>Don't use fully justified text alignment on your website</em>, and the next one is <em>Justify text with HTML/CSS? Don't do it!</em>. It seems that justified text has a bad rap on the web.</aside>
+          </section>
+
+          <section>
+            <h2>Text alignment and justification</h2>
+            <div class="livecode livecode-2p">
+              <div class="result txt-algn">
+                <p>定义了CSS如何支持各种不同国际化语言的书写模式，例如拉丁（Latin）语系及印度（Indic）语系采用从左到右的书写模式，希尔伯特语（Hebrew）或阿拉伯语（Arabic）采用从右到左的书写模式，一些混合了拉丁语和阿拉伯语的文字可能采用双向书写（bidirectional），而一些东亚文字则需要竖排（从上到下）的书写模式。</p>
+              </div>
+              <div class="code"><style class="code-editor" contenteditable="true">.txt-algn p {
+  text-align: justify;
+  text-justify: auto;
+}</style></div>
+            </div>
+            <aside class="notes">
+              <p>This might be true for Latin-based scripts but not so for Chinese characters, which are also known as square characters. Each character is composed within a uniform square and Chinese texts can be typeset into neat rows and columns. In fact, it is ideal to do so.</p>
+              <p>But when there are both Latin-based alphabets and Chinese characters, it's impossible for everything to line up both vertically and horizontally. The next best thing is to ensure the start and end of every line is aligned well.</p>
+              <p>And we can make adjustments between adjacent typography character units in Chinese texts with <code>inter-character</code>.</p>
+            </aside>
+          </section>
+
+          <section>
+            <h2>Vertical text on the web</h2>
+            <p>CSS Writing Modes Level 3 defines CSS features to support for various international writing modes, such as <strong>left-to-right</strong> (e.g. Latin or Indic), <strong>right-to-left</strong> (e.g. Hebrew or Arabic), <strong>bidirectional</strong> (e.g. mixed Latin and Arabic) and <strong>vertical</strong> (e.g. Asian scripts).</p>
+            <aside class="notes">Writing systems are also not limited a horizontal, top-to-bottom direction. Traditionally, East Asian languages were all written vertically. Arabic and Hebrew are written from right-to-left. But broad support for vertical writing on the web was a relatively recent development, somewhere around 2015 or so.</aside>
+          </section>
+
+          <section>
+            <h2><code>writing-mode</code> property</h2>
+            <table style="font-size:75%;margin-bottom:1em">
+              <tr>
+                <td>horizontal-tb</td>
+                <td><span>从1987到现在</span></td>
+              </tr>
+              <tr>
+                <td>vertical-rl</td>
+                <td><span style="writing-mode:vertical-rl;height:3.5em">从1987到现在</span></td>
+              </tr>
+              <tr>
+                <td>vertical-lr</td>
+                <td><span style="writing-mode:vertical-lr;height:3.5em">从1987到现在</span></td>
+              </tr>
+              <tr>
+                <td>sideways-rl*</td>
+                <td><span style="writing-mode:sideways-rl;height:3.5em">从1987到现在</span></td>
+              </tr>
+              <tr>
+                <td>sideways-lr*</td>
+                <td><span style="writing-mode:sideways-lr;height:3.5em">从1987到现在</span></td>
+              </tr>
+            </table>
+            <small>Properties marked with * have been deferred to Writing Modes Level 4.</small>
+            <aside class="notes">The <code>writing-mode</code> property specifically caters for vertical writing on the web. The default is horizontal, top-to-bottom. To change the direction to vertical, we use <code>vertical-rl</code> or <code>vertical-lr</code>. There's a sideways option that's formally been moved to Level 4 but Firefox has it implemented.</aside>
+          </section>
+
+          <section>
+            <h2><code>text-orientation</code> property</h2>
+            <div class="l-multiple">
+              <figure>
+                <div><span style="writing-mode:vertical-rl;font-family:'PingFang SC'">从1987到现在</span></div>
+                <figcaption>mixed</figcaption>
+              </figure>
+              <figure>
+                <div><span style="writing-mode:vertical-rl;text-orientation:upright;text-align:justify;font-family:'PingFang SC'">从<span style="letter-spacing:-4px">1987</span>到现在</span></div>
+                <figcaption>upright</figcaption>
+              </figure>
+              <figure>
+                <div><span style="writing-mode:vertical-rl;text-orientation:sideways;font-family:'PingFang SC'">从1987到现在</span></div>
+                <figcaption>sideways</figcaption>
+              </figure>
+            </div>
+            <aside class="notes">
+              <p>Rotating lines of texts also affects the individual characters within the line.</p>
+              <p>Browsers are smart enough to tell that Chinese characters, which are dual-direction, will always be displayed upright. While horizontal-only languages, will have their characters rotated when vertical.</p> 
+              <p>The <code>text-orientation</code> property can be used to make all the characters upright or sideways, depending on what you want.</p>
+            </aside>
+          </section>
+
+          <section>
+            <h2><code>text-combine-upright</code> property</h2>
+            <div class="l-multiple" style="margin-bottom:1em">
+              <figure>
+                <div><span style="writing-mode:vertical-rl;font-family:'PingFang SC'">民國107年5月25日</span></div>
+                <figcaption>none</figcaption>
+              </figure>
+              <figure>
+                <div><span style="writing-mode:vertical-rl;font-family:'PingFang SC'">民國<span style="text-combine-upright:all">107</span>年<span style="text-combine-upright:all">5</span>月<span style="text-combine-upright:all">25</span>日</span></div>
+                <figcaption>all</figcaption>
+              </figure>
+              <figure>
+                <div><span style="writing-mode:vertical-rl;font-family:'PingFang SC'">民國<span style="text-combine-upright:digits 3">107</span>年<span style="text-combine-upright:digits">5</span>月<span style="text-combine-upright:digits">25</span>日</span></div>
+                <figcaption>digits &lt;integer&gt;*</figcaption>
+              </figure>
+            </div>
+            <a href="https://codepen.io/huijing/pen/bWzMEJ"><small>Codepen example for text-combine-upright</small></a>
+            <aside class="notes">
+              <p>The last property in this set is the <code>text-combine-upright</code> property, which address the issue of numerals and abbreviations in vertical text. For example, if your text contains dates. This property lets us fit all the digits into the width of one character and display them upright.</p>
+              <p>The last value there, called digits, has yet to be implemented in any browser, but it really makes sense to have some sort of a limit on this.</p>
+            </aside>
+          </section>
+
+          <section>
+            <div class="l-multiple">
+              <div style="margin-bottom:1em;writing-mode:vertical-rl;font-family:'PingFang SC';font-size:175%"><span>古巴<span style="text-combine-upright:all">Cuba</span></span></div>
+              <div class="fragment" style="margin-bottom:1em;writing-mode:vertical-rl;font-family:'PingFang SC';font-size:175%"><span>乌克兰<span style="text-combine-upright:all">Ukraine</span></span></div>
+              <div class="fragment" style="margin-bottom:1em;writing-mode:vertical-rl;font-family:'PingFang SC';font-size:175%"><span>列支敦斯登<span style="text-combine-upright:all">Liechtenstein</span></span></div>
+            </div>
+            <aside class="notes">I mean, 4 digits is probably the maximum you can push such a tiny space. 9 looks very uncomfortable. 13 is just ridiculous.</aside>
+          </section>
+
+          <section>
+            <h2>Not just for East Asian text</h2>
+            <div class="livecode livecode-2p">
+              <div class="result wm-cont2" style="font-size:75%;text-align:left">
+                <h2 class="vert-rl upright">Magie</h2>
+                <p class="vert-lr">“Zwei Dinge sind unendlich, das Universum und die menschliche Dummheit, aber bei dem Universum bin ich mir noch nicht ganz sicher.”</p>
+                <div>
+                  <p style="margin-bottom:1em">Es liegt der heiße Sommer<br>Auf deinen Wängelein;<br>Es liegt der Winter, der kalte,<br>In deinem Herzchen klein.</p>
+                  <p>Das wird sich bei dir ändern,<br>Du Vielgeliebte mein!<br>Der Winter wird auf den Wangen,<br>Der Sommer im Herzen sein.</p>
+                </div>
+                <p class="vert-rl rotate" style="font-weight:bold;font-size:1.414em">Das Leben ist kein Ponyhof</p>
+              </div>
+              <div class="code"><style class="code-editor" contenteditable="true">.wm-cont2 .vert-rl {
+  writing-mode: vertical-rl;
+}
+
+.wm-cont2 .upright {
+  text-orientation: ;
+}
+
+.wm-cont2 .vert-lr {
+  writing-mode: ;
+  color: #ff9b00;
+}
+
+.wm-cont2 .rotate {
+  transform: rotate(0deg);
+  color: #007bc3;
+}
+
+.wm-cont2 {
+  display: grid;
+  grid-template-columns: 1fr 2fr 5fr 1fr;
+  justify-items: center;
+}</style></div>
+            </div>
+            <aside class="notes">
+              <p>Vertical text may be better suited for East Asian languages when it comes to full length body copy, but that doesn't mean other languages can't get in on the fun. We see vertically set text in print all the time.</p>
+              <p>Headers or short runs of text are relatively safe to typeset vertically, and can add some typographic variety to your web layouts. We can also combine <code>writing-mode</code> with transforms or other CSS properties.</p>
+            </aside>
+          </section>
+
+          <section>
+            <h2>Everything is a box on the web</h2>
+            <img data-src="img/box-fam.svg" style="max-height:75vh" alt="Boxes" class="plain">
+            <aside class="notes">Even though the web can display all sorts of content, dynamic or otherwise, everything is essentially rectangles. Or we can call them boxes. There are many different kinds of boxes, that interact with each other in different ways, but fundamentally, the web is boxes.</aside>
+          </section>
+
+          <section>
+            <h2>Line breaks in inline boxes</h2>
+            <div class="livecode livecode-3p">
+              <pre class="markup" style="white-space:pre-wrap"><code class="html"><p class="line-container">If an element <em>generates zero boxes</em>, was it <strong>really there</strong> at all?</p></code></pre>
+              <div class="result linebox">
+                <p class="line-container" style="text-align:left">If an element <em>generates zero boxes</em>, was it <strong>really there</strong> at all?</p>
+              </div>
+              <div class="code"><style class="code-editor" contenteditable="true">.linebox p.line-container {
+  font-size: 65%;
+}
+
+.linebox .line-container em {
+  background-color: limegreen;
+  padding: 0.25em;
+  mix-blend-mode: color;
+}
+
+.linebox .line-container strong {
+  background-color: salmon;
+  padding: 0.25em;
+  mix-blend-mode: hard-light;
+}</style></div>
+            </div>
+            <aside class="notes">
+              <p>Here we have 5 inline boxes. For now there is enough room so all 5 boxes fit into a single line box. But when there isn't enough room, inline boxes will be broken across line boxes. The break is known as a line break.</p>
+              <p>If content wrapping is enabled, the user agent has to minimise the amount of content overflowing a line by wrapping the line at a soft wrap opportunity if one exists.</p>
+              <p>For most writing systems, soft wrap opportunities occur at word boundaries, where spaces or punctuation are used to explicitly separate words.</p>
+            </aside>
+          </section>
+
+          <section>
+            <h2>CSS for controlling line breaks</h2>
+            <table>
+              <tr>
+                <td style="width:22%"><code>line-break</code></td>
+                <td>allows choosing various levels of “strictness” for line breaking restrictions</td>
+              </tr>
+              <tr>
+                <td><code>word-break</code></td>
+                <td>controls what types of letters are glommed together to form unbreakable “words”, causing CJK characters to behave like non-CJK text or vice versa</td>
+              </tr>
+              <tr>
+                <td><code>hyphens</code></td>
+                <td>controls whether automatic hyphenation is allowed to break words in scripts that hyphenate</td>
+              </tr>
+              <tr>
+                <td><code>overflow-wrap</code></td>
+                <td>allows the UA to take a break anywhere in otherwise-unbreakable strings that would otherwise overflow</td>
+              </tr>
+            </table>
+            <p><a href="https://youtu.be/r5PLrAoyhv0">Line breaking</a> by Florian Rivoal @ dotCSS</p>
+            <aside class="notes">
+              <p>There is a lot of nuance because word breaking works differently depending on the language we're typesetting for.</p>
+              <p>For example, English wraps at spaces. But for Japanese or Chinese characters, the break is per character, usually but not always. Because line breaks are prohibited before certain punctuation marks. </p>
+              <p>A number of Southeast Asian scripts are written without spaces between words, then text is wrapped at syllable boundaries in addition to word boundaries. We could keep going here.</p>
+              <p>There is interplay between the 4 properties here to provide developers more precise control over line breaking, because some rules take precedence over others if both are present, or some only take affect if <code>white-space</code> property allows wrapping, for example.</p>
+            </aside>
+          </section>
+
+          <section>
+            <h2>Future improvements to web typography</h2>
+            <ul>
+              <li><a href="https://www.w3.org/TR/css-rhythm-1/">CSS Rhythmic Sizing</a></li>
+              <li><a href="https://www.w3.org/TR/css-inline-3/">CSS Inline Layout Module Level 3</a></li>
+              <li><a href="https://www.w3.org/TR/css-text-4/">CSS Text Module Level 4</a></li>
+              <li><a href="https://www.w3.org/TR/css-text-decor-4/">CSS Text Decoration Module Level 4</a></li>
+            </ul>
+            <aside class="notes">
+              <p>Even though we've covered quite a bit, there is still a long way to go when it comes to web typography.</p>
+              <p>The CSS line box model was invented in the 90s, when technology was not as powerful as it is today. Typographers generally don't like the way CSS handles font sizes but the CSS Working Group is trying to fix things.</p>
+              <p>They are thinking about rhythmic sizing and how to programmatically achieve a consistent vertical rhythm on the web, where text is often interrupted by other types and sizes of content. How to deal with situations where different font families are being used. How to support typographic features in writing systems that are not alphabetic.</p>
+              <p>A lot of work is at the ideation phase because there are so many tricky problems to work out.</p>
+            </aside>
+          </section>
+
+          <section>
+            <h2>The leading problem</h2>
+            <img data-src="img/leading.svg" style="max-height:75vh" alt="Line height" class="plain">
+            <aside class="notes">
+              <p>CSS allocates leading based on the line-height by subtracting the ascent and descent from the specified line-height, then splitting the remainder in half, giving each half to the top and bottom.</p>
+              <p>Doing so allows us to get decently even line-spacing, but mostly if the paragraph of text is of the same font. When we have different font families on the same line, things don't line up as well because different fonts have different ideas of what 1em should be.</p>
+              <p>What CSS does now is guaranteeing content never overlaps at the expense of aesthetics. But the CSSWG is trying to come up with a new algorithm to calculate the optimal line size.</p>
+            </aside>
+          </section>
+
+          <section>
+            <h2>The interruption problem</h2>
+            <img data-src="img/rhythm.png" style="max-height:100vh" alt="Vertical rhythm when content is varied" class="plain">
+            <aside class="notes">
+              <p>Strict vertical rhythm tends to go out the window when we're trying to layout many different types of content, but it is important when it comes to things like multi-column layouts with content side-by-side.</p>
+              <p>One of the proposed new properties is called <code>block-step-size</code>, which sets the height of the line to be a multiple of the value you define. But again, where should any extra space go?</p>
+              <p>The CSS rhythmic sizing specification is currently sourcing for feedback.</p>
+            </aside>
+          </section>
+
+          <section>
+            <h2>CSS Line Layout and Vertical Rhythm</h2>
+            <iframe width="960" height="540" src="https://www.youtube.com/embed/OtlGo48iTOk" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <aside class="notes">More granular details about this topic, I recommend watching this talk by Elika Etemad, AKA Fantasai, as she is the editor for many of the specifications I listed above.</aside>
+          </section>
+
+          <section>
+            <h2>Imagine an alternate history…</h2>
+            <aside class="notes">
+              <p>As we close off this talk, I'd like to circle back to the idea I mentioned at the start about the origins of digital technology. Right now, we're living in a digital age. A world running on computers.</p>
+              <p>These computers were pioneered in the West, in countries that use an alphabetic, left-to-right oriented writing system. This is an irreversible first-mover advantage, because less than a century later, everyone in the world, regardless of their native writing system, is more or less used to a left-to-right, top-to-bottom orientation for digital content.</p>
+              <p>This isn't a criticism. It is simply an observation. Vertical writing systems like Chinese, Japanese and Korean went horizontal as Western science and technology prevailed. Even so, I cannot help but wonder, if somewhere along the timeline something changed, if the Islamic Golden Age prevailed or if the Ming Dynasty never closed China's doors? What kind of a world we would live in, and what systems would we be using?</p>
+            </aside>
+          </section>
+        </section>
+
+        <section>
+          <h2>References</h2>
+          <ul>
+            <li>Lunde, K. (2009). <em>CJVK Information Processing.</em> Beijing: O’Reilly</li>
+            <li>Haralambous, Y. (2007). <em>Fonts & Encodings.</em> Beijing: O’Reilly</li>
+            <li>Gillam, R. (2003). <em>Unicode demystified: a practical programmers guide to the encoding standard.</em> Boston, MA: Addison-Wesley.</li>
+            <li>Dyson, M. C., & Suen, C. Y. (2016). <em>Digital fonts and reading.</em> New Jersey: World Scientific.</li>
+            <li><a href="https://www.joelonsoftware.com/2003/10/08/the-absolute-minimum-every-software-developer-absolutely-positively-must-know-about-unicode-and-character-sets-no-excuses/">The Absolute Minimum Every Software Developer Absolutely, Positively Must Know About Unicode and Character Sets (No Excuses!)</a></li>
+            <li><a href="https://www.w3.org/International/questions/qa-choosing-encodings">Choosing & applying a character encoding</a></li>
+            <li><a href="https://www.unicode.org/faq/font_keyboard.html">Fonts and Keyboards</a></li>
+            <li><a href="https://blog.typekit.com/2010/10/05/type-rendering-on-the-web/">Type rendering on the web</a></li>
+            <li><a href="https://blog.justfont.com/2018/11/macfonts-jiyukobo-mincho/">Mac內建字體的故事：柊野明朝與游明朝</a></li>
+            <li><a href="https://www.joelonsoftware.com/2007/06/12/font-smoothing-anti-aliasing-and-sub-pixel-rendering/">Font smoothing, anti-aliasing, and sub-pixel rendering</a></li>
+            <li><a href="https://www.zachleat.com/web/font-smooth/">Laissez-faire Font Smoothing and Anti-aliasing</a></li>
+            <li><a href="https://www.smashingmagazine.com/2012/04/a-closer-look-at-font-rendering/">A Closer Look At Font Rendering</a></li>
+          </ul>
+          <aside class="notes">That being said, I'm glad that there are active efforts in improving the support of more languages and writing systems in the digital realm. Hopefully this provides greater opportunities for people from different backgrounds and cultures to share their perspectives and have their voices heard on a bigger scale than before.</aside>
+        </section>
+
+        <section style="text-align: left;">
+          <h1>Thank you</h1>
+          <p><img class="j-icon plain" data-src="img/home.png" alt="Website"><a href="https://www.chenhuijing.com">https://www.chenhuijing.com</a></p>
+          <p><img class="j-icon plain" data-src="img/twitter.png" alt="Twitter"><a href="https://twitter.com/hj_chen">@hj_chen</a></p>
+          <p><img class="j-icon plain" data-src="img/medium.png" alt="Medium"><a href="https://medium.com/@hj_chen">@hj_chen</a></p>
+          <p><img class="j-icon plain" data-src="img/codepen.png" alt="Codepen"><a href="http://codepen.io/huijing/">@huijing</a></p>
+        </section>
+      </div>
+
+      <footer style="position:absolute;width:calc(100% - 1em);bottom:0;font-size:40%;z-index:1;display:flex;justify-content:space-between;padding:0.5em;mix-blend-mode:multiply"><span>https://huijing.github.io/slides/81-typetechmunich-2020</span><span style="text-align:right">@hj_chen</span></footer>
+    </div>
+
+    <script src="js/reveal.js"></script>
+    <script src="lib/js/caniuse-embed.min.js"></script>
+    <script src="lib/js/custom.js"></script>
+
+    <script>
+      Reveal.initialize({
+        width: 1920,
+        height: 1080,
+        hash: true,
+        transition: 'fade',
+        dependencies: [
+          { src: 'plugin/markdown/marked.js' },
+          { src: 'plugin/markdown/markdown.js' },
+          { src: 'plugin/notes/notes.js', async: true },
+          { src: 'plugin/highlight/highlight.js', async: true }
+        ]
+      });
+    </script>
+  </body>
+</html>
