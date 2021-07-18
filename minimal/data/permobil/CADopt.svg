@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="68.252mm" height="46.096mm" version="1.1" viewBox="0 0 68.252 46.096" xmlns="http://www.w3.org/2000/svg" xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+ <defs>
+  <marker id="marker1479" overflow="visible" orient="auto">
+   <path transform="matrix(.8 0 0 .8 10 0)" d="m0 0 5-5-17.5 5 17.5 5z" fill-rule="evenodd" stroke="#000" stroke-width="1pt"/>
+  </marker>
+  <marker id="marker1469" overflow="visible" orient="auto">
+   <path transform="matrix(.8 0 0 .8 10 0)" d="m0 0 5-5-17.5 5 17.5 5z" fill-rule="evenodd" stroke="#000" stroke-width="1pt"/>
+  </marker>
+  <marker id="marker1459" overflow="visible" orient="auto">
+   <path transform="matrix(.8 0 0 .8 10 0)" d="m0 0 5-5-17.5 5 17.5 5z" fill-rule="evenodd" stroke="#000" stroke-width="1pt"/>
+  </marker>
+  <marker id="marker1449" overflow="visible" orient="auto">
+   <path transform="matrix(.8 0 0 .8 10 0)" d="m0 0 5-5-17.5 5 17.5 5z" fill-rule="evenodd" stroke="#000" stroke-width="1pt"/>
+  </marker>
+  <marker id="marker1335" overflow="visible" orient="auto">
+   <path transform="matrix(-.8 0 0 -.8 -10 0)" d="m0 0 5-5-17.5 5 17.5 5z" fill-rule="evenodd" stroke="#000" stroke-width="1pt"/>
+  </marker>
+  <marker id="marker1325" overflow="visible" orient="auto">
+   <path transform="matrix(-.8 0 0 -.8 -10 0)" d="m0 0 5-5-17.5 5 17.5 5z" fill-rule="evenodd" stroke="#000" stroke-width="1pt"/>
+  </marker>
+  <marker id="marker1315" overflow="visible" orient="auto">
+   <path transform="matrix(-.8 0 0 -.8 -10 0)" d="m0 0 5-5-17.5 5 17.5 5z" fill-rule="evenodd" stroke="#000" stroke-width="1pt"/>
+  </marker>
+  <marker id="marker1305" overflow="visible" orient="auto">
+   <path transform="matrix(-.8 0 0 -.8 -10 0)" d="m0 0 5-5-17.5 5 17.5 5z" fill-rule="evenodd" stroke="#000" stroke-width="1pt"/>
+  </marker>
+ </defs>
+ <metadata>
+  <rdf:RDF>
+   <cc:Work rdf:about="">
+    <dc:format>image/svg+xml</dc:format>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:title/>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <g transform="translate(-79.243 -56.753)">
+  <g fill="none" stroke="#000">
+   <g stroke-width=".26458px">
+    <path d="m79.375 56.885v30.451"/>
+    <path d="m79.375 87.312h52.917v-30.427h-52.917"/>
+    <path d="m79.375 79.375c0.25368-0.75265 0.55622-1.0814 1.3229-1.3229l50.271-1e-6c0.66859 0.22943 0.98746 0.71532 1.3229 1.3229"/>
+   </g>
+   <g stroke-width=".1">
+    <g stroke-linecap="round" stroke-linejoin="round">
+     <circle cx="100.38" cy="82.829" r="1.3"/>
+     <circle cx="100.38" cy="61.133" r="1.3"/>
+     <circle cx="95.086" cy="62.72" r="1.3"/>
+     <circle cx="123.66" cy="62.72" r="1.3"/>
+     <circle cx="123.66" cy="81.77" r="1.3"/>
+     <circle cx="95.086" cy="81.77" r="1.3"/>
+    </g>
+    <g>
+     <path d="m97.204 61.09h44.324"/>
+     <path d="m97.089 82.965h44.21"/>
+     <path d="m139.81 61.377v21.473" marker-end="url(#marker1325)" marker-start="url(#marker1469)"/>
+     <path d="m100.42 79.462v16.191"/>
+     <path d="m79.52 94.898h20.669" marker-end="url(#marker1305)" marker-start="url(#marker1449)"/>
+     <path d="m132.07 101.67h-52.491" marker-end="url(#marker1315)" marker-start="url(#marker1459)"/>
+     <path d="m132.29 87.312v15.537"/>
+     <path d="m132.29 56.885h14.551"/>
+     <path d="m132.29 87.312h15.203"/>
+     <path d="m145.84 87.158v-30.138" marker-end="url(#marker1335)" marker-start="url(#marker1479)"/>
+     <path d="m79.375 87.312v15.418"/>
+     <path d="m100.42 64.116v-5.9815"/>
+    </g>
+   </g>
+  </g>
+  <g font-family="sans-serif" font-size="3px" stroke-width=".26458" text-anchor="middle">
+   <text x="89.836838" y="93.847939" text-align="center" style="line-height:1.25" xml:space="preserve"><tspan x="89.836838" y="93.847939" font-family="sans-serif" font-size="3px" stroke-width=".26458">27,50</tspan></text>
+   <text x="105.80745" y="100.6229" text-align="center" style="line-height:1.25" xml:space="preserve"><tspan x="105.80745" y="100.6229" font-family="sans-serif" font-size="3px" stroke-width=".26458">68,00</tspan></text>
+   <text transform="rotate(-90)" x="-72.130768" y="138.93109" text-align="center" style="line-height:1.25" xml:space="preserve"><tspan x="-72.130768" y="138.93109" font-family="sans-serif" font-size="3px" stroke-width=".26458">28,00</tspan></text>
+   <text transform="rotate(-90)" x="-72.128853" y="144.75192" text-align="center" style="line-height:1.25" xml:space="preserve"><tspan x="-72.128853" y="144.75192" font-family="sans-serif" font-size="3px" stroke-width=".26458">39,06</tspan></text>
+  </g>
+ </g>
+</svg>
