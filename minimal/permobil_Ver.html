@@ -13,6 +13,7 @@
 		<link rel="stylesheet" href="css/theme/jing2.css">
 		<link rel="stylesheet" href="plugin/highlight/atom-one-light.css" id="highlight-theme">
 
+		
 
 	</head>
     
@@ -36,31 +37,20 @@
 		<div class="slides">
 		<!-- ======================================================================= -->
 		<section>
-			<br>
-			<br>
-			<br>
+			
 			<h1 style="line-height:1.1;margin-bottom:0.5em">Case study: Hand heater</h1>
 			<p><small>By <a href="https://jmbruges.github.io/">Javier Brugés</a></small></p>
+			<div data-id="box" style=" height: 200px; background: #36628A;">
+				<p class="positioned" style="color: whitesmoke; text-align-last: left; line-height: 100px; margin-left: 30px;" >
+					<img src="data/permobil/logo-permobil-white.svg" width="auto">
+					<br>
+					Verification Engineer <br>
+					<span class="positioned" style="color: whitesmoke; position: relative; top: -100px;left:80%" id="datetime"></span>
+				</p>
+				
+			</div>
+			
 			<aside class="notes"></aside>
-		</section>
-		<!-- ======================================================================= -->
-		<section>
-			<br>
-			<br>
-			<br>
-			<br>
-			<h3 style="color:white;font-family: Fira Sans;"><b>Interview with Permobil</b></h3>
-			<h4 style="color:white;font-family: Fira Sans;">Verification Engineer</h4>
-			<p  style="color: whitesmoke;text-align: left;">
-
-				Author: Javier Brugés
-			</p>
-			<p class="positioned" style="color: whitesmoke;text-align-last: left;;" >
-				Case Study.
-				<br>
-				<span id="datetime"></span>
-			</p>
-
 		</section>
 
 		<!-- ======================================================================= -->
@@ -77,7 +67,7 @@
 				<p class="fragment"><span style="position: relative; left:20%">&#8593;</span> <span style="position: relative; left:70%">&#8593;</span></p>
 				<li class="fragment">Device version: Newest design or older versions?</li>
 				<br>
-				<li class="fragment">Audit subcontractor?</li>
+				<li class="fragment">Subcontractor's fault?</li>
 				
 
 				<!-- <li><a href="https://github.com/oddbird/css-sandbox/blob/main/src/rwd/query/explainer.md">Container Query Proposal & Explainer</a></li> -->
@@ -103,8 +93,11 @@
 
 			<ul style="font-size-adjust: inherit; display: block;">
 				<li>Model</li>
+				<br>
 				<li>Fuse inspection</li>
+				<br>
 				<li>Misuse of the device</li>
+				<br>
 				<li>Peripheral problems</li>
 				<!-- <li>Temperature log from thermistor (?)</li> -->
 			</ul>
@@ -136,40 +129,46 @@
 			<br>
 			<!-- <h5>Team strategy</h5> -->
 			<div style="font-size-adjust: inherit; font-size: medium;">
-				<table class="reveal">
-					<tr>
+				<table class="reveal" style="width:90%">
+					
 						<!-- <td style="position:static; width:640px; height:480px; margin:0 auto;"> -->
-							<td style="text-align:center" class="fragment" data-fragment-index="0" >
-							<p>Mechanical / <br>Design assembly</p>
-							<ul style="font-size-adjust: inherit; display: block;">
-								<li>CAD</li>
-								<li>Mounting of the unit</li>
-								<li>Distance to the user</li>
-							</ul>
-						</td>
+						<tr style="text-align:center" class="fragment" data-fragment-index="0" >
+							<th>Mechanical / Design assembly</th>
+							<th>Electronics</th>
+							<th>Software</th>
+						</tr>
+						<tr>
+							<td style="text-align:center" class="fragment" data-fragment-index="1" >
+								<ul style="font-size-adjust: inherit; display: block;">
+									<li>CAD</li>
+									<li>Mounting of the unit</li>
+									<li>Distance to the user</li>
+								</ul>
+							</td>
+						
 						<!-- <td style="position:static; width:640px; height:480px; margin:0 auto;"> -->
-							<td style="text-align:center" class="fragment" data-fragment-index="0" >
-							<p>Electronics</p>
-							<br>
-							<ul style="font-size-adjust: inherit; display: block;">
-								<li>Sensors</li>
-								<li>Actuators</li>
-								<li>Cabling</li>
-								<li>PCU</li>
-							</ul>
-						</td>
+						
+							<td style="text-align:center" class="fragment" data-fragment-index="1" >
+								<ul style="font-size-adjust: inherit; display: block;">
+									<li>Sensors</li>
+									<li>Actuators</li>
+									<li>Cabling</li>
+									<li>PCU</li>
+								</ul>
+							</td>
+						
 						<!-- <td style="position:static; width:640px; height:480px; margin:0 auto;"> -->
-							<td style="text-align:center" class="fragment" data-fragment-index="0">
-							<p>Software</p>
-							<br>
-							<ul style="font-size-adjust: inherit; display: block;">
-								<li>Microcontroller</li>
-								<li>Synchronisation</li>
-								<li>Testing</li>
-							</ul>
-						</td>	
-					</tr>
+						
+							<td style="text-align:center" class="fragment" data-fragment-index="1" > 
+								<ul style="font-size-adjust: inherit; display: block;">
+									<li>Microcontroller</li>
+									<li>Synchronisation</li>
+									<li>Testing</li>
+								</ul>
+							</td>	
+						</tr>
 				</table>
+				<span class="fragment" data-fragment-index="2" style="position:absolute; top:20%; left:42%; border:3px; border-style:double; border-color:#FF0000; padding-left: 6em; padding-right: 6em; padding-top:12em;text-align: center; font-size: 2em;">Hardware/Software<br>Integration</span>
 		
 			</div>
 			
@@ -330,6 +329,10 @@
 					// }
 				]
 			});
+		</script>
+		<script>
+			var dt = new Date();
+			document.getElementById("datetime").innerHTML = dt.toLocaleDateString();
 		</script>
   		<!-- init -->
 	</body>
